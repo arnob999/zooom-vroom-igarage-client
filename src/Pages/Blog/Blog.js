@@ -13,9 +13,9 @@ const Blog = () => {
                     <p className="mt-2">Every object with its methods and properties contains an internal and hidden property known as [[Prototype]]. The Prototypal Inheritance is a feature in javascript used to add methods and properties in objects. It is a method by which an object can inherit the properties and methods of another object. Traditionally, in order to get and set the [[Prototype]] of an object, we use Object.getPrototypeOf and Object.</p>
                 </div>
                 <div className="flex items-center justify-between mt-4">
-                    <p rel="noopener noreferrer" href="#" className="hover:underline dark:text-violet-400">Read more...</p>
+                    <p rel="noopener noreferrer" className="hover:underline dark:text-violet-400">Read more...</p>
                     <div>
-                        <p rel="noopener noreferrer" href="#" className="flex items-center">
+                        <p rel="noopener noreferrer" className="flex items-center">
                             <img src=" https://cdn3d.iconscout.com/3d/premium/thumb/photographer-5691514-4741055.png?f=webp" alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full dark:bg-gray-500" />
                             <span className="hover:underline dark:text-gray-400">Arnob</span>
                         </p>
@@ -34,9 +34,9 @@ const Blog = () => {
                     </p>
                 </div>
                 <div className="flex items-center justify-between mt-4">
-                    <p rel="noopener noreferrer" href="#" className="hover:underline dark:text-violet-400">Read more...</p>
+                    <p rel="noopener noreferrer" className="hover:underline dark:text-violet-400">Read more...</p>
                     <div>
-                        <p rel="noopener noreferrer" href="#" className="flex items-center">
+                        <p rel="noopener noreferrer" className="flex items-center">
                             <img src=" https://cdn3d.iconscout.com/3d/premium/thumb/photographer-5691514-4741055.png?f=webp" alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full dark:bg-gray-500" />
                             <span className="hover:underline dark:text-gray-400">Arnob</span>
                         </p>
@@ -63,9 +63,9 @@ const Blog = () => {
                     </p>
                 </div>
                 <div className="flex items-center justify-between mt-4">
-                    <p rel="noopener noreferrer" href="#" className="hover:underline dark:text-violet-400">Read more...</p>
+                    <p rel="noopener noreferrer" className="hover:underline dark:text-violet-400">Read more...</p>
                     <div>
-                        <p rel="noopener noreferrer" href="#" className="flex items-center">
+                        <p rel="noopener noreferrer" className="flex items-center">
                             <img src=" https://cdn3d.iconscout.com/3d/premium/thumb/photographer-5691514-4741055.png?f=webp" alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full dark:bg-gray-500" />
                             <span className="hover:underline dark:text-gray-400">Arnob</span>
                         </p>
@@ -82,9 +82,9 @@ const Blog = () => {
                     <p className="mt-2">Just a couple of years ago, developers were mainly debating whether they should be using Angular vs React for their projects. But over the course of the last couple of years, we’ve seen a growth of interest in a third player called Vue.js. If you are a developer starting out on a project and cannot decide on which JavaScript framework to use, this guide should help you make a decision.</p>
                 </div>
                 <div className="flex items-center justify-between mt-4">
-                    <p rel="noopener noreferrer" href="#" className="hover:underline dark:text-violet-400">Read more...</p>
+                    <p rel="noopener noreferrer" className="hover:underline dark:text-violet-400">Read more...</p>
                     <div>
-                        <p rel="noopener noreferrer" href="#" className="flex items-center">
+                        <p rel="noopener noreferrer" className="flex items-center">
                             <img src=" https://cdn3d.iconscout.com/3d/premium/thumb/photographer-5691514-4741055.png?f=webp" alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full dark:bg-gray-500" />
                             <span className="hover:underline dark:text-gray-400">Arnob</span>
                         </p>
