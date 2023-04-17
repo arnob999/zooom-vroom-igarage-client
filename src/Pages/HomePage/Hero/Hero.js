@@ -5,9 +5,9 @@ const Hero = () => {
         <div className="hero h-[650px]" style={{ backgroundImage: `url(${banner})` }}>
             <div className="hero-overlay bg-opacity-30"></div>
             <div className="hero-content text-center text-neutral-content">
-                <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                    <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                <div className="max-w-md text-white">
+                    <h1 className="mb-5 text-5xl font-bold">Weolcome to Zooom Vrooom iGarage</h1>
+                    <p className="mb-5">Find your dream car here with the price your pocket could carry.....</p>
                     <button className="btn btn-primary">Get Started</button>
                 </div>
             </div>
