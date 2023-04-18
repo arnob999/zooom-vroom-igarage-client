@@ -7,8 +7,8 @@ const Hero = () => {
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md text-white">
                     <h1 className="mb-5 text-5xl font-bold">Weolcome to Zooom Vrooom iGarage</h1>
-                    <p className="mb-5">Find your dream car here with the price your pocket could carry.....</p>
-                    <button className="btn btn-primary">Get Started</button>
+                    <p className="mb-5 text-lg">Find your dream car here with the price your pocket could carry.....</p>
+                    <button className="btn btn-primary">Start a tour</button>
                 </div>
             </div>
         </div>
