@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAT3anEdVz4isNT8_qSkpoQk6rL4qxmKFo",
-    authDomain: "zooom-vrooom.firebaseapp.com",
-    projectId: "zooom-vrooom",
-    storageBucket: "zooom-vrooom.appspot.com",
-    messagingSenderId: "406682360704",
-    appId: "1:406682360704:web:28cb9a6e768857da957f65"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId
 };
 
 // Initialize Firebase
