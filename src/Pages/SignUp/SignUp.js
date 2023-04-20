@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import transparentLogo from '../../assets/icon_transparent_short.png'
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 const SignUp = () => {
 
 
@@ -12,7 +13,7 @@ const SignUp = () => {
 
 
     //using context api
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, googleLogin } = useContext(AuthContext);
 
     //main signupHandler function
     const handleSignup = (data) => {
@@ -24,6 +25,21 @@ const SignUp = () => {
             })
             .catch(err => {
                 console.error(err)
+            })
+    }
+
+    //creating google login instance
+    const googleProvider = new GoogleAuthProvider();
+
+    //google login handler
+    const handleGoogleLogin = () => {
+        googleLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(err => {
+                console.error(err);
             })
     }
 
@@ -126,7 +142,7 @@ const SignUp = () => {
                                     </svg>
                                 </div>
 
-                                <span className="w-5/6 px-4 py-3 font-bold text-center text-black">Sign in with Google</span>
+                                <button onClick={handleGoogleLogin} className="w-5/6 px-4 py-3 font-bold text-center text-black">Sign in with Google</button>
                             </a>
 
                             {/*  */}
