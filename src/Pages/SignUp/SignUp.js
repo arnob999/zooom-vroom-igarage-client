@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import transparentLogo from '../../assets/icon_transparent_short.png'
+import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../contexts/AuthProvider';
 const SignUp = () => {
+
+
+    const [signUpError, setSignUpError] = useState('')
+
+    //react hook form for controlled submission
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+
+    //using context api
+    const { createUser, updateUser } = useContext(AuthContext);
+
+    //main signupHandler function
+    const handleSignup = (data) => {
+        setSignUpError('')
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }
+
     return (
         <div>
             <section class="bg-white text-black">
                 <div class="container flex items-center justify-center min-h-screen px-6 mx-auto">
-                    <form class="w-full max-w-md">
+                    <form onSubmit={handleSubmit(handleSignup)} class="w-full max-w-md">
                         <div class="flex justify-center mx-auto">
                             <img class="w-auto h-7 sm:h-8" src={transparentLogo} alt="" />
                         </div>
@@ -23,7 +49,10 @@ const SignUp = () => {
                                 </svg>
                             </span>
 
-                            <input type="text" class="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Username" />
+                            <input type="text" class="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Username" {...register("name", {
+                                required: "Username is required"
+                            })} />
+                            {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
                         </div>
 
                         <label for="dropzone-file" class="flex items-center px-3 py-3 mx-auto mt-6 text-center bg-white border-2 border-dashed rounded-lg cursor-pointer dark:border-gray-600 dark:bg-gray-900">
@@ -43,7 +72,14 @@ const SignUp = () => {
                                 </svg>
                             </span>
 
-                            <input type="email" class="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address" />
+                            <input type="email" class="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address"
+                                {...register("email", {
+                                    required: true
+                                })} />
+
+
+                            {/* Showing error if email is empty with the help of formState:{errors} */}
+                            {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
                         </div>
 
                         <div class="relative flex items-center mt-4">
@@ -53,7 +89,17 @@ const SignUp = () => {
                                 </svg>
                             </span>
 
-                            <input type="password" class="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password" />
+                            <input type="password" class="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password"
+                                {...register("password", {
+                                    required: "Password is required",
+                                    minLength: { value: 6, message: "Password must be 6 characters long" },
+                                    pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must have uppercase, number and special characters' }
+                                })}
+                            />
+
+
+                            {/* Showing error if password is empty with the help of formState:{errors} */}
+                            {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                         </div>
 
                         <div class="relative flex items-center mt-4">
@@ -67,12 +113,8 @@ const SignUp = () => {
                         </div>
 
                         <div class="mt-6">
-                            <button class="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                                Sign Up
-                            </button>
+                            <input className='btn btn-accent w-full mt-4' value="Sign Up" type="submit" />
 
-
-                            {/*  */}
 
                             <a href="#" className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-300">
                                 <div className="px-4 py-2">
