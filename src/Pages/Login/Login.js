@@ -1,6 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import transparentLogo from '../../assets/icon_transparent_short.png'
+import { GoogleAuthProvider } from 'firebase/auth';
+import { AuthContext } from '../../contexts/AuthProvider';
 const Login = () => {
+
+
+    //using context api
+    const { googleLogin } = useContext(AuthContext)
+
+    //creating google login instance
+    const googleProvider = new GoogleAuthProvider();
+
+    //google login handler
+    const handleGoogleLogin = () => {
+        googleLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    }
+
     return (
         <div className="flex my-20 sm:my-10 md:my-16 lg:w-[450px] mx-auto overflow-hidden rounded-lg shadow-lg ">
 
