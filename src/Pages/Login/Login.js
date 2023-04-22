@@ -2,11 +2,17 @@ import React, { useContext } from 'react';
 import transparentLogo from '../../assets/icon_transparent_short.png'
 import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { useForm } from 'react-hook-form';
 const Login = () => {
 
 
     //using context api
     const { googleLogin, signIn } = useContext(AuthContext)
+
+    //useForm hook
+
+    const { register, formState: { errors }, handleSubmit } = useForm()
+
 
     //creating google login instance
     const googleProvider = new GoogleAuthProvider();
@@ -25,8 +31,13 @@ const Login = () => {
 
     //email login handler
 
-    const handleEmailLogin = () => {
-        signIn()
+    const handleEmailLogin = (data) => {
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+            })
+            .catch(err => console.error(err))
     }
 
     return (
@@ -66,26 +77,41 @@ const Login = () => {
                     <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
                 </div>
 
-                <div className="mt-4">
-                    <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="LoggingEmailAddress">Email Address</label>
+                <form onSubmit={handleSubmit(handleEmailLogin)}>
+                    <div className="mt-4">
+                        <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="LoggingEmailAddress">Email Address</label>
 
-                    <input id="LoggingEmailAddress" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="email" />
-                </div>
+                        <input id="LoggingEmailAddress" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="text"
+                            {...register("email", {
+                                required: "Email Address is required"
+                            })}
+                        />
 
-                <div className="mt-4">
-                    <div className="flex justify-between">
-                        <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="loggingPassword">Password</label>
-                        <a href="#" className="text-xs text-gray-500 dark:text-gray-300 hover:underline">Forget Password?</a>
+                        {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
                     </div>
 
-                    <input id="loggingPassword" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="password" />
-                </div>
+                    <div className="mt-4">
+                        <div className="flex justify-between">
+                            <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="loggingPassword">Password</label>
+                            <a href="#" className="text-xs text-gray-500 dark:text-gray-300 hover:underline">Forget Password?</a>
+                        </div>
 
-                <div className="mt-6">
-                    <button onClick={handleEmailLogin} className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
-                        Sign In
-                    </button>
-                </div>
+                        <input id="loggingPassword" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="password"
+                            {...register("password", {
+                                required: "Password is required",
+                                minLength: { value: 6, message: 'Password must be 6 characters or longer' }
+                            })}
+                        />
+                        {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
+                    </div>
+
+                    <div className="mt-6">
+                        <button onClick={handleEmailLogin} className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+                            Sign In
+                        </button>
+                    </div>
+
+                </form>
 
                 <div className="flex items-center justify-between mt-4">
                     <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
