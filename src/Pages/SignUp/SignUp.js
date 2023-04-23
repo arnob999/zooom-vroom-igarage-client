@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 const SignUp = () => {
 
-
+    //signUp error preview
     const [signUpError, setSignUpError] = useState('')
 
     //react hook form for controlled submission
@@ -22,9 +22,11 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                setSignUpError("")
             })
             .catch(err => {
                 console.error(err)
+                setSignUpError(err.message)
             })
     }
 
@@ -145,7 +147,9 @@ const SignUp = () => {
                         </button>
 
 
-
+                        <div>
+                            {signUpError && <p className='text-red-600'>{signUpError}</p>}
+                        </div>
                         <div class="mt-6 text-center ">
                             <a href="#" class="text-sm text-blue-500 hover:underline dark:text-blue-400">
                                 Already have an account?

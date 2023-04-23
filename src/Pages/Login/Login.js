@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import transparentLogo from '../../assets/icon_transparent_short.png'
 import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { useForm } from 'react-hook-form';
+import { useLocation, useNavigate } from 'react-router-dom';
 const Login = () => {
 
 
@@ -36,9 +37,25 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
+                setLoginError("")
             })
-            .catch(err => console.error(err))
+            .catch(err => {
+                console.error(err)
+                setLoginError(err.message)
+            })
     }
+
+
+    //redirect using useNavigation
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || "/";
+
+
+    //login error message preview
+    const [loginError, setLoginError] = useState("")
+
 
     return (
         <div className="flex my-20 sm:my-10 md:my-16 lg:w-[450px] mx-auto overflow-hidden rounded-lg shadow-lg ">
@@ -110,7 +127,9 @@ const Login = () => {
                             Sign In
                         </button>
                     </div>
-
+                    <div>
+                        {loginError && <p className='text-red-600'>{loginError}</p>}
+                    </div>
                 </form>
 
                 <div className="flex items-center justify-between mt-4">
