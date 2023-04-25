@@ -3,7 +3,7 @@ import transparentLogo from '../../assets/icon_transparent_short.png'
 import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { useForm } from 'react-hook-form';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useToken from '../../hooks/useToken/useToken';
 const Login = () => {
 
@@ -101,15 +101,15 @@ const Login = () => {
                 <div className="flex items-center justify-between mt-4">
                     <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/4"></span>
 
-                    <a href="#" className="text-xs text-center text-gray-500 uppercase dark:text-gray-400 hover:underline">or login
-                        with email</a>
+                    <p className="text-xs text-center text-gray-500 uppercase dark:text-gray-400 hover:underline">or login
+                        with email</p>
 
                     <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
                 </div>
 
                 <form onSubmit={handleSubmit(handleEmailLogin)}>
                     <div className="mt-4">
-                        <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="LoggingEmailAddress">Email Address</label>
+                        <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" htmlFor="LoggingEmailAddress">Email Address</label>
 
                         <input id="LoggingEmailAddress" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="text"
                             {...register("email", {
@@ -122,8 +122,8 @@ const Login = () => {
 
                     <div className="mt-4">
                         <div className="flex justify-between">
-                            <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="loggingPassword">Password</label>
-                            <a href="#" className="text-xs text-gray-500 dark:text-gray-300 hover:underline">Forget Password?</a>
+                            <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" htmlFor="loggingPassword">Password</label>
+                            <p className="text-xs text-gray-500 dark:text-gray-300 hover:underline">Forget Password?</p>
                         </div>
 
                         <input id="loggingPassword" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="password"
@@ -148,7 +148,7 @@ const Login = () => {
                 <div className="flex items-center justify-between mt-4">
                     <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
 
-                    <a href="#" className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline">or sign up</a>
+                    <Link to={'/signup'} className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline">or sign up</Link>
 
                     <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
                 </div>

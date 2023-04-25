@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import useToken from '../../hooks/useToken/useToken';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 const SignUp = () => {
 
@@ -107,9 +107,9 @@ const SignUp = () => {
                         </div>
 
                         <div className="flex items-center justify-center mt-6">
-                            <a href="#" className="w-1/3 pb-4 font-medium text-center text-black capitalize border-b-2 ">
+                            <p className="w-1/3 pb-4 font-medium text-center text-black capitalize border-b-2 ">
                                 Sign Up
-                            </a>
+                            </p>
                         </div>
 
                         <div className="relative flex items-center mt-8">
@@ -125,7 +125,7 @@ const SignUp = () => {
                             {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
                         </div>
 
-                        <label for="dropzone-file" className="flex items-center px-3 py-3 mx-auto mt-6 text-center bg-white border-2 border-dashed rounded-lg cursor-pointer dark:border-gray-600 dark:bg-gray-900">
+                        <label htmlhtmlFor="dropzone-file" className="flex items-center px-3 py-3 mx-auto mt-6 text-center bg-white border-2 border-dashed rounded-lg cursor-pointer dark:border-gray-600 dark:bg-gray-900">
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                             </svg>
@@ -203,9 +203,9 @@ const SignUp = () => {
                             {signUpError && <p className='text-red-600'>{signUpError}</p>}
                         </div>
                         <div className="mt-6 text-center ">
-                            <a href="#" className="text-sm text-blue-500 hover:underline dark:text-blue-400">
+                            <Link to={'/login'} className="text-sm text-blue-500 hover:underline dark:text-blue-400">
                                 Already have an account?
-                            </a>
+                            </Link>
                         </div>
                     </form>
 

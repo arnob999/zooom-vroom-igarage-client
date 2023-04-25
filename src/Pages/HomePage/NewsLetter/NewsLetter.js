@@ -10,17 +10,17 @@ const NewsLetter = () => {
                 </div>
                 <img src={newsLetterImg} alt="Contact our customer support" className="w-[340px]" />
             </div>
-            <form novalidate="" className="space-y-6 ng-untouched ng-pristine ng-valid">
+            <form className="space-y-6 ng-untouched ng-pristine ng-valid">
                 <div>
-                    <label for="name" className="text-sm">Full name</label>
+                    <label htmlFor="name" className="text-sm">Full name</label>
                     <input id="name" type="text" placeholder="Your name" className="w-full p-3 rounded dark:bg-gray-800" />
                 </div>
                 <div>
-                    <label for="email" className="text-sm">Email</label>
+                    <label htmlFor="email" className="text-sm">Email</label>
                     <input id="email" type="email" placeholder="Your email" className="w-full p-3 rounded dark:bg-gray-800" />
                 </div>
                 <div>
-                    <label for="message" className="text-sm">Message</label>
+                    <label htmlFor="message" className="text-sm">Message</label>
                     <textarea id="message" rows="3" placeholder="Your message" className="w-full p-3 rounded dark:bg-gray-800"></textarea>
                 </div>
                 <button type="submit" className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded dark:bg-violet-400 dark:text-gray-900">Send Message</button>
