@@ -3,6 +3,8 @@ import transparentLogo from '../../assets/icon_transparent_short.png'
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import useToken from '../../hooks/useToken/useToken';
+import { useNavigate } from 'react-router-dom';
 const SignUp = () => {
 
     //signUp error preview
@@ -15,6 +17,20 @@ const SignUp = () => {
     //using context api
     const { createUser, updateUser, googleLogin } = useContext(AuthContext);
 
+
+    //save user on state to verify with jwt
+    const [createdUserEmail, setCreatedUserEmail] = useState("");
+
+    //verifying email with the hook UseToken
+    const [token] = useToken(createdUserEmail)
+
+    const navigate = useNavigate()
+
+    //if token verified it will navigate you to homepage
+    if (token) {
+        navigate('/')
+    }
+
     //main signupHandler function
     const handleSignup = (data) => {
         setSignUpError('')
@@ -23,10 +39,43 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user)
                 setSignUpError("")
+
+
+                const userInfo = {
+                    displayName: data.name
+                }
+
+                //update user name
+                updateUser(userInfo)
+                    .then(() => {
+                        //saveUser is a fucntion to save user info to database
+                        saveUser(data.name, data.email)
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    })
             })
             .catch(err => {
                 console.error(err)
                 setSignUpError(err.message)
+            })
+    }
+
+    const saveUser = (name, email) => {
+
+
+        const user = { name, email };
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setCreatedUserEmail(email);
             })
     }
 
