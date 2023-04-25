@@ -1,18 +1,19 @@
 import React from "react";
-const AnimatedCard = ({ car }) => {
-    const { name } = car
+const AnimatedCard = ({ category }) => {
+    const { category: cat, description, pic } = category
     return (
         <div className="animatedCard">
             <div className="container">
                 <div className="card">
                     <div className="image rounded-lg">
-                        <img className="max-h-[350px] rounded-lg" src="https://i.ibb.co/XVtFpGS/evCar.png" alt="" />
+                        <img className="max-h-[350px] rounded-lg" src={pic} alt="" />
                     </div>
                     <div className="content">
-                        <h3 className="text-black">{name}</h3>
+                        <h3 className="text-black">{cat}</h3>
                         <p className=" text-black">
-                            DIn publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.
+                            {description}
                         </p>
+                        <button className="py-2 mt-5 px-4 shadow-md no-underline rounded-full  text-white font-sans font-semibold text-sm border-blue btn-secondary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">Browse More</button>
                     </div>
                 </div>
             </div>
@@ -46,7 +47,7 @@ const CardStyle = () => {
       }
       
       .container .card:hover {
-        height : 350px;    
+        height : 270px;    
       }
       
       .container .card .image {
@@ -84,10 +85,10 @@ const CardStyle = () => {
     );
 };
 
-export default function Card({ car }) {
+export default function CatCard({ category }) {
     return (
         <>
-            <AnimatedCard car={car} />
+            <AnimatedCard category={category} />
             <CardStyle />
         </>
     );

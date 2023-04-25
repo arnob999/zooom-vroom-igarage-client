@@ -6,10 +6,17 @@ const HotProducts = () => {
         name: "hagu"
     }
     return (
-        <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'>
-            <Card car={car} />
-            <Card car={car} />
-            <Card car={car} />
+        <div className='mt-20'>
+            <div className='flex justify-center'>
+                <h1 className='lg:text-5xl xl:text-5xl text-3xl font-serif font-bold mb-3'>
+                    Hot Products
+                </h1>
+            </div>
+            <div className='mt-32 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'>
+                <Card car={car} />
+                <Card car={car} />
+                <Card car={car} />
+            </div>
         </div>
     );
 };
