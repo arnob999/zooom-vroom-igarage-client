@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import useToken from '../../hooks/useToken/useToken';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 const SignUp = () => {
 
     //signUp error preview
@@ -39,7 +40,7 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user)
                 setSignUpError("")
-
+                toast("Sign Up Complete")
 
                 const userInfo = {
                     displayName: data.name
@@ -61,8 +62,10 @@ const SignUp = () => {
             })
     }
 
-    const saveUser = (name, email) => {
 
+
+    //this function is for save user to DB
+    const saveUser = (name, email) => {
 
         const user = { name, email };
 
