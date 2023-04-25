@@ -4,6 +4,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useToken from '../../hooks/useToken/useToken';
 const Login = () => {
 
 
@@ -30,21 +31,13 @@ const Login = () => {
             })
     }
 
-    //email login handler
 
-    const handleEmailLogin = (data) => {
-        signIn(data.email, data.password)
-            .then(result => {
-                const user = result.user
-                console.log(user)
-                setLoginError("")
-            })
-            .catch(err => {
-                console.error(err)
-                setLoginError(err.message)
-            })
-    }
 
+
+    //save login email to verify jwt token with hook useToken
+    const [loginUserEmail, setLoginUserEmail] = useState('')
+
+    const [token] = useToken(loginUserEmail)
 
     //redirect using useNavigation
     const location = useLocation();
@@ -52,9 +45,29 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || "/";
 
+    //after verifying jwt navigate starts
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
     //login error message preview
     const [loginError, setLoginError] = useState("")
+
+    //email login handler
+
+    const handleEmailLogin = (data) => {
+        setLoginError("")
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                setLoginUserEmail(data.email)
+            })
+            .catch(err => {
+                console.error(err)
+                setLoginError(err.message)
+            })
+    }
 
 
     return (
