@@ -5,7 +5,7 @@ import sportsCar from "../../../assets/CarCategory/sportsCar.png"
 import evCar from "../../../assets/CarCategory/evCar.png"
 const Category = () => {
     return (
-        <div className="mt-8">
+        <div className="mt-8 w-auto">
             <div className='flex justify-center'>
                 <h1 className='text-5xl font-serif font-bold mb-3'>
                     Categories
@@ -22,7 +22,7 @@ const Category = () => {
                 <div className="card2">
                     <img className='mx-auto' src={sportsCar} alt="Eiffel Tower" />
                     <h3 className='my-3 font-bold'>Sports</h3>
-                    <p>Sports car have emmers engine power. Offering fun ride.</p>
+                    <p>Sports car have emmens engine power. Offering fun ride.</p>
                     <button className="py-2 mt-5 px-4 shadow-md no-underline rounded-full  text-white font-sans font-semibold text-sm border-blue btn-secondary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">Browse More</button>
                 </div>
 

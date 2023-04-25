@@ -27,7 +27,7 @@ const Footer = () => {
                     <div className="flex flex-col items-center sm:flex-row sm:justify-between">
                         <p className="text-sm text-gray-500 dark:text-gray-300">© Copyright 2021. All Rights Reserved.</p>
 
-                        <div className="flex -mx-2">
+                        <div className="flex w-[100px] mr-8">
                             <p className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Reddit">
                                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
