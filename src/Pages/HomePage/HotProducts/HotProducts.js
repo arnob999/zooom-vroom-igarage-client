@@ -12,7 +12,7 @@ const HotProducts = () => {
                     Hot Products
                 </h1>
             </div>
-            <div className='mt-32 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'>
+            <div className='mt-20 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'>
                 <Card car={car} />
                 <Card car={car} />
                 <Card car={car} />
