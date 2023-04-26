@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 const AnimatedCard = ({ category }) => {
-    const { _id, category: cat, description, pic } = category
+    const { category: cat, description, pic } = category
     return (
         <div className="animatedCard">
             <div className="container">
@@ -93,7 +93,7 @@ const CardStyle = () => {
     );
 };
 
-export default function CatCard({ category }) {
+export default function DetailsCard({ category }) {
     return (
         <>
             <AnimatedCard category={category} />
