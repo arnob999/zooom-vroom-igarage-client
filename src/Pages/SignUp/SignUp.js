@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import transparentLogo from '../../assets/icon_transparent_short.png'
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../contexts/AuthProvider';
@@ -31,6 +31,12 @@ const SignUp = () => {
     if (token) {
         navigate('/')
     }
+
+    const [accountType, setAccountType] = useState('buyer');
+
+    const handleAccountTypeChange = (event) => {
+        setAccountType(event.target.value);
+    };
 
     //main signupHandler function
     const handleSignup = (data) => {
@@ -65,9 +71,9 @@ const SignUp = () => {
 
 
     //this function is for save user to DB
-    const saveUser = (name, email) => {
+    const saveUser = (name, email, role) => {
 
-        const user = { name, email };
+        const user = { name, email, role: accountType };
 
         fetch('http://localhost:5000/users', {
             method: 'POST',
@@ -87,6 +93,7 @@ const SignUp = () => {
 
     //google login handler
     const handleGoogleLogin = () => {
+        setAccountType("buyer")
         googleLogin(googleProvider)
             .then(result => {
                 const user = result.user;
@@ -96,6 +103,11 @@ const SignUp = () => {
                 console.error(err);
             })
     }
+
+    //this is a tester to prove that it is working
+    // useEffect(() => {
+    //     console.log(accountType)
+    // }, [accountType])
 
     return (
         <div>
@@ -170,6 +182,31 @@ const SignUp = () => {
 
                             {/* Showing error if password is empty with the help of formState:{errors} */}
                             {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
+                        </div>
+                        <div className='flex justify-around mt-4'>
+                            <div className='flex'>
+                                <p className='text-lg mr-2 font-sans'>Buyer</p>
+                                <input
+                                    type="radio"
+                                    name="accountType"
+                                    value="buyer"
+                                    className="radio-xs my-auto radio-info"
+                                    checked={accountType === 'buyer'}
+                                    onChange={handleAccountTypeChange}
+                                />
+                            </div>
+
+                            <div className='flex'>
+                                <p className='text-lg mr-2 font-sans'>Seller</p>
+                                <input
+                                    type="radio"
+                                    name="accountType"
+                                    value="seller"
+                                    className="radio-xs my-auto radio-info"
+                                    checked={accountType === 'seller'}
+                                    onChange={handleAccountTypeChange}
+                                />
+                            </div>
                         </div>
 
                         {/* <div className="relative flex items-center mt-4">

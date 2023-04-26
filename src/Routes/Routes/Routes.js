@@ -7,6 +7,7 @@ import Login from "../../Pages/Login/Login";
 import Home from "../../Pages/HomePage/Home/Home";
 import Products from "../../Pages/Products/Products";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Try from "../../Pages/Try";
 
 
 const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
                 path: '*',
                 element: <NotFound />
             },
+            {
+                path: '/try',
+                element: <Try />
+            }
 
         ]
     },
