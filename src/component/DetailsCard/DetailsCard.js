@@ -2,7 +2,7 @@ import React from 'react';
 import verify from "../../assets/verify.png"
 
 const DetailsCard = ({ product }) => {
-    const { description, date, location, name, orgPrice, rePrice, pic, sellerName } = product;
+    const { description, date, location, name, orgPrice, rePrice, pic, sellerName, sellerVerified, usedFor } = product;
     console.log(product);
 
     return (
@@ -30,11 +30,25 @@ const DetailsCard = ({ product }) => {
                                 description.slice(0, 199)
                             }
                         </p>
+                        <p className='text-center w-full'>
+                            <span className='underline mr-1'> Used For:</span>{usedFor} Year
+                        </p>
                     </div>
                 </div>
 
                 <div className='px-3 py-2   text-gray-800 dark:text-gray-200 bg-gray-200 dark:bg-gray-700'>
-                    <p className='justify-center flex'>Posted By: {sellerName} <img className='w-5 h-5' src={verify} alt="" /></p>
+                    <p className='justify-center flex'>Posted By: {sellerName}
+                        {
+                            sellerVerified === "true" &&
+                            <div className='bg-blue-500 ml-1 pl-1 pr-[6px] py-1 flex rounded-lg text-xs'>
+                                <img className='w-4 h-4 mr-1' src={verify} alt="" />
+                                <span className="">
+                                    Verified
+                                </span>
+                            </div>
+
+                        }
+                    </p>
                     <div className='flex justify-between px-2'>
                         <p className=''>
                             On: {date}
@@ -49,9 +63,9 @@ const DetailsCard = ({ product }) => {
                     <button class="px-2 py-1 text-xs font-semibold text-white  transition-colors duration-300 transform bg-red-700 rounded hover:bg-emerald-500 dark:hover:bg-red-600">Report</button>
 
                 </div>
-            </div>
+            </div >
 
-        </div>
+        </div >
     );
 };
 
