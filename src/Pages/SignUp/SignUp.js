@@ -56,7 +56,7 @@ const SignUp = () => {
                 updateUser(userInfo)
                     .then(() => {
                         //saveUser is a fucntion to save user info to database
-                        saveUser(data.name, data.email)
+                        saveUser(data.name, data.email, accountType)
                     })
                     .catch(err => {
                         console.error(err);
@@ -71,9 +71,9 @@ const SignUp = () => {
 
 
     //this function is for save user to DB
-    const saveUser = (name, email, role) => {
+    const saveUser = (name, email, roleValue) => {
 
-        const user = { name, email, role: accountType };
+        const user = { name, email, role: roleValue, verified: "false" };
 
         fetch('http://localhost:5000/users', {
             method: 'POST',
@@ -97,7 +97,10 @@ const SignUp = () => {
         googleLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user)
+                console.log(user.displayName)
+                console.log(user.email)
+                const gmailDefaultRole = "buyer"
+                saveUser(user.displayName, user.email, gmailDefaultRole)
             })
             .catch(err => {
                 console.error(err);
