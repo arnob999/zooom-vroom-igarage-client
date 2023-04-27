@@ -1,103 +1,58 @@
-import React from "react";
-import { Link } from "react-router-dom";
-const AnimatedCard = ({ category }) => {
-    const { category: cat, description, pic } = category
-    return (
-        <div className="animatedCard">
-            <div className="container">
-                <div className="card">
-                    <div className="image rounded-lg">
-                        <img className="max-h-[350px] rounded-lg" src={pic} alt="" />
-                    </div>
-                    <h3 className="text-black text-2xl font-serif font-bold -mt-6 text-center align-middle name">{cat}</h3>
-                    <div className="content">
-                        <h3 className="text-black text-2xl font-serif font-bold -mt-4">{cat}</h3>
-                        <p className=" text-black">
-                            {description}
-                        </p>
-                        <Link to={`./category/${_id}`}>
-                            <button className="py-2 mt-5 px-4 shadow-md no-underline rounded-full  text-white font-sans font-semibold text-sm border-blue btn-secondary hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2">Browse More</button>
-                        </Link>
+import React from 'react';
+import verify from "../../assets/verify.png"
 
+const DetailsCard = ({ product }) => {
+    const { description, date, location, name, orgPrice, rePrice, pic, sellerName } = product;
+    console.log(product);
+
+    return (
+        <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">
+            <div className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md" style={{ backgroundImage: `url(${pic})` }}></div>
+
+            <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-80 dark:bg-gray-800">
+                <h3 className="py-2 font-bold tracking-wide text-center text-gray-800 uppercase dark:text-white">{name}
+
+                </h3>
+
+                <div className="px-3 flex justify-center py-2 bg-gray-200 dark:bg-gray-700">
+                    <div className=''>
+                        <span className='font-bold text-gray-800 dark:text-gray-200'>Price: </span>
+                        <span className="font-semibold text-gray-800 dark:text-gray-200">{rePrice}</span>
+                        <span className=" line-through font-medium text-sm text-slate-500 ml-1">{orgPrice}</span>
                     </div>
                 </div>
+
+                <div className=' text-gray-800 dark:text-gray-200'>
+                    <div className='px-3 py-2'>
+                        <p className='font-semibold underline text-center'>Description</p>
+                        <p className='text-center w-full'>
+                            {
+                                description.slice(0, 199)
+                            }
+                        </p>
+                    </div>
+                </div>
+
+                <div className='px-3 py-2   text-gray-800 dark:text-gray-200 bg-gray-200 dark:bg-gray-700'>
+                    <p className='justify-center flex'>Posted By: {sellerName} <img className='w-5 h-5' src={verify} alt="" /></p>
+                    <div className='flex justify-between px-2'>
+                        <p className=''>
+                            On: {date}
+                        </p>
+                        <p>Location : {location}</p>
+                    </div>
+                </div>
+
+                <div className='px-5 py-2  text-gray-800 dark:text-gray-200 flex justify-evenly'>
+                    <button class="px-2 py-1 text-xs font-semibold text-white  transition-colors duration-300 transform bg-emerald-600 rounded hover:bg-emerald-500 dark:hover:bg-emerald-500">Book Now</button>
+
+                    <button class="px-2 py-1 text-xs font-semibold text-white  transition-colors duration-300 transform bg-red-700 rounded hover:bg-emerald-500 dark:hover:bg-red-600">Report</button>
+
+                </div>
             </div>
+
         </div>
     );
 };
 
-const CardStyle = () => {
-    return (
-        <style>
-            {`
-      * { 
-        margin : 0;
-        padding: 0;
-        box-sizing : border-box;
-        font-family : "Poppins", sans-serif;
-      }
-        
-      .container .card {
-        position: relative;
-        max-width : 300px;
-        height : 200px;  
-        margin : 30px 10px;
-        padding : 20px 15px;
-        display : flex;
-        flex-direction : column;
-        box-shadow : 0 5px 20px rgba(0,0,0,0.5);
-        transition : 0.3s ease-in-out;
-        border-radius : 15px;
-      }
-      
-      .container .card:hover {
-        height : 270px;    
-      }
-      
-      .container .card .image {
-        position : relative;
-        width : 260px;
-        height : 260px;
-        top : -40%;
-        left: 8px;
-        box-shadow : 0 5px 20px rgba(0,0,0,0.2);
-        z-index : 1;
-      }
-      
-      .container .card .image img {
-        max-width : 100%;
-      }
-      
-      .container .card .content {
-        position : relative;
-        top : -140px;
-        padding : 10px 15px;
-        visibility : hidden;
-        opacity : 0;
-        transition : 0.3s ease-in-out;
-      }
-      
-      .container .card:hover .content {
-         margin-top : 30px;
-         padding-top: 40px;
-         visibility : visible;
-         opacity : 1;
-         transition-delay: 0.2s;  
-      }
-
-      .container .card:hover .name{
-         visibility:hidden
-      }
-    `}
-        </style>
-    );
-};
-
-export default function DetailsCard({ category }) {
-    return (
-        <>
-            <AnimatedCard category={category} />
-            <CardStyle />
-        </>
-    );
-}
+export default DetailsCard;
