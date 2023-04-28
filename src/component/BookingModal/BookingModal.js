@@ -2,7 +2,7 @@ import React from 'react';
 
 const BookingModal = ({ booking }) => {
 
-
+    const { userName, userEmail, productName, price } = booking;
 
     return (
         <div>
