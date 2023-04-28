@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import verify from "../../assets/verify.png"
+import BookingModal from '../BookingModal/BookingModal';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const DetailsCard = ({ product }) => {
     const { description, date, location, name, orgPrice, rePrice, pic, sellerName, sellerVerified, usedFor } = product;
-    console.log(product);
 
+    const { user } = useContext(AuthContext);
+    console.log(user.displayName)
+
+    const booking = {
+        userName: user.displayName,
+        userEmail: user.email,
+        productName: name,
+        price: rePrice
+    }
     return (
         <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">
             <div className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md" style={{ backgroundImage: `url(${pic})` }}></div>
@@ -42,7 +52,7 @@ const DetailsCard = ({ product }) => {
                             sellerVerified === "true" &&
                             <div className='bg-blue-500 ml-1 pl-1 pr-[6px] py-1 flex rounded-lg text-xs'>
                                 <img className='w-4 h-4 mr-1' src={verify} alt="" />
-                                <span className="">
+                                <span className="font-semibold">
                                     Verified
                                 </span>
                             </div>
@@ -58,13 +68,14 @@ const DetailsCard = ({ product }) => {
                 </div>
 
                 <div className='px-5 py-2  text-gray-800 dark:text-gray-200 flex justify-evenly'>
-                    <button class="px-2 py-1 text-xs font-semibold text-white  transition-colors duration-300 transform bg-emerald-600 rounded hover:bg-emerald-500 dark:hover:bg-emerald-500">Book Now</button>
+                    <button class="px-2 py-1 text-xs font-bold text-white  transition-colors duration-300 transform bg-emerald-600 rounded hover:bg-emerald-500 dark:hover:bg-emerald-500 hover:font-bold"><label htmlFor="bookingModal">Book Now</label></button>
+                    {/* The button to open modal */}
 
-                    <button class="px-2 py-1 text-xs font-semibold text-white  transition-colors duration-300 transform bg-red-700 rounded hover:bg-emerald-500 dark:hover:bg-red-600">Report</button>
+                    <button class="px-2 py-1 text-xs font-bold text-white  transition-colors duration-300 transform bg-red-700 rounded hover:bg-emerald-500 dark:hover:bg-red-600">Report</button>
 
                 </div>
             </div >
-
+            <BookingModal booking={booking} />
         </div >
     );
 };
