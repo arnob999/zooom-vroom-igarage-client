@@ -3,7 +3,6 @@ import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import Navbar from '../../Shared/Navbar/Navbar';
 import useAuthorization from "../../../hooks/useAuthorization";
-import { useState } from 'react';
 
 
 const DashboardLayout = () => {
@@ -36,7 +35,7 @@ const DashboardLayout = () => {
                         {
                             isAuthorized == "seller" && <>
                                 <li><Link to="/dashboard/addProduct">Add Product</Link></li>
-                                <li><Link to="/dashboard/addProduct">My Product</Link></li>
+                                <li><Link to="/dashboard/myProduct">My Product</Link></li>
 
                             </>
                         }
