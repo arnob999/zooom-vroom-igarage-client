@@ -10,6 +10,12 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Try from "../../Pages/Try";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 import DashboardLayout from "../../Pages/Dashboard/DashboardLayout/DashboardLayout";
+import MyOrder from "../../Pages/Dashboard/BuyerDashboard/MyOrder"
+import AddProduct from "../../Pages/Dashboard/SellerDashBoard/AddProduct"
+import MyProduct from "../../Pages/Dashboard/SellerDashBoard/MyProduct"
+import AllSeller from "../../Pages/Dashboard/AdminDashboard/AllSeller"
+import AllBuyer from "../../Pages/Dashboard/AdminDashboard/AllBuyer"
+import ReportedItem from "../../Pages/Dashboard/AdminDashboard/ReportedItem"
 
 
 const router = createBrowserRouter([
@@ -68,8 +74,29 @@ const router = createBrowserRouter([
                 </PrivateRoute>,
                 children: [
                     {
-
-                    }
+                        path: '/dashboard/myOrder',
+                        element: <MyOrder />
+                    },
+                    {
+                        path: '/dashboard/addProduct',
+                        element: <AddProduct />
+                    },
+                    {
+                        path: '/dashboard/myProduct',
+                        element: <MyProduct />
+                    },
+                    {
+                        path: '/dashboard/allSeller',
+                        element: <AllSeller />
+                    },
+                    {
+                        path: '/dashboard/allBuyer',
+                        element: <AllBuyer />
+                    },
+                    {
+                        path: '/dashboard/reportedItem',
+                        element: <ReportedItem></ReportedItem>
+                    },
                 ]
             }
 
