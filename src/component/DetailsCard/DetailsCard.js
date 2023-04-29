@@ -1,13 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import verify from "../../assets/verify.png"
 import BookingModal from '../BookingModal/BookingModal';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const DetailsCard = ({ product }) => {
-    const { _id, description, date, location, name, orgPrice, rePrice, pic, sellerName, sellerVerified, usedFor } = product;
+    const { _id, description, date, location, name, orgPrice, rePrice, pic, sellerName, sellerEmail, usedFor } = product;
+
 
     const { user } = useContext(AuthContext);
-    console.log(user.displayName)
+
+    const [sellerVerified, setSellerVerified] = useState("")
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/verification/${sellerEmail}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data[0].verified)
+                setSellerVerified(data[0].verified)
+            })
+    }, [])
 
     const booking = {
         userName: user.displayName,
@@ -28,6 +40,12 @@ const DetailsCard = ({ product }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                if (data.modifiedCount > 0) {
+                    toast.success("Reported to Admin")
+                }
+                else if (data.modifiedCount == 0) {
+                    toast.error("This item is already reported")
+                }
             })
 
     }
