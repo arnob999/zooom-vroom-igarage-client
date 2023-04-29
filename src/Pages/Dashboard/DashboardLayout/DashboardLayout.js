@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
-import useAdmin from "../../../hooks/useAuthorization"
+import useAuthorization from "../../../hooks/useAuthorization"
 import Navbar from '../../Shared/Navbar/Navbar';
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
-    const [isAdmin] = useAdmin(user?.email)
+    const [isAdmin] = useAuthorization(user?.email)
     return (
         <div>
             <Navbar />
