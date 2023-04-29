@@ -10,12 +10,12 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Try from "../../Pages/Try";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 import DashboardLayout from "../../Pages/Dashboard/DashboardLayout/DashboardLayout";
-import MyOrder from "../../Pages/Dashboard/BuyerDashboard/MyOrder"
-import AddProduct from "../../Pages/Dashboard/SellerDashBoard/AddProduct"
-import MyProduct from "../../Pages/Dashboard/SellerDashBoard/MyProduct"
-import AllSeller from "../../Pages/Dashboard/AdminDashboard/AllSeller"
-import AllBuyer from "../../Pages/Dashboard/AdminDashboard/AllBuyer"
-import ReportedItem from "../../Pages/Dashboard/AdminDashboard/ReportedItem"
+import MyOrder from "../../Pages/Dashboard/BuyerDashboard/MyOrder/MyOrder"
+import AddProduct from "../../Pages/Dashboard/SellerDashBoard/AddProduct/AddProduct"
+import MyProduct from "../../Pages/Dashboard/SellerDashBoard/MyProduct/MyProduct"
+import AllSeller from "../../Pages/Dashboard/AdminDashboard/AllSeller/AllSeller"
+import AllBuyer from "../../Pages/Dashboard/AdminDashboard/AllBuyer/AllBuyer"
+import ReportedItem from "../../Pages/Dashboard/AdminDashboard/ReportedItem/ReportedItem"
 
 
 const router = createBrowserRouter([

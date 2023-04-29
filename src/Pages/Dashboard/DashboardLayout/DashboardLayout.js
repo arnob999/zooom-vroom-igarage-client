@@ -2,9 +2,7 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import Navbar from '../../Shared/Navbar/Navbar';
-import useAuthorization from "../../../hooks/useAuthorization";
-
-
+import useAuthorization from "../../../hooks/useAuthorization/useAuthorization";
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
     const [isAuthorized] = useAuthorization(user?.email)
