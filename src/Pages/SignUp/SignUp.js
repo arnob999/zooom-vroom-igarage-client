@@ -46,7 +46,7 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user)
                 setSignUpError("")
-                toast("Sign Up Complete")
+                toast.success("Sign Up Complete")
 
                 const userInfo = {
                     displayName: data.name

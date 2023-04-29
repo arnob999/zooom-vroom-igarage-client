@@ -1,9 +1,14 @@
 import React from 'react';
+import { toast } from 'react-hot-toast';
 
 const BookingModal = ({ booking }) => {
 
-    const { userName, userEmail, productName, price } = booking;
+    const { userName, userEmail, productName, price, _id, } = booking;
 
+    //toast show
+    const handleSubmit = () => {
+        toast.success("Your order is booked")
+    }
     return (
         <div>
 
@@ -31,7 +36,7 @@ const BookingModal = ({ booking }) => {
 
 
                     </form>
-                    <div className="flex justify-center mt-6 ">
+                    <div onClick={handleSubmit} className="flex justify-center mt-6 ">
                         <label htmlFor="bookingModal" className="btn rounded-xl btn-sm transition-colors duration-300 transform bg-emerald-500 hover:bg-emerald-400 hover:font-bold text-white">Submit</label>
                     </div>
                 </div>

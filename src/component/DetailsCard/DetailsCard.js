@@ -4,7 +4,7 @@ import BookingModal from '../BookingModal/BookingModal';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const DetailsCard = ({ product }) => {
-    const { description, date, location, name, orgPrice, rePrice, pic, sellerName, sellerVerified, usedFor } = product;
+    const { _id, description, date, location, name, orgPrice, rePrice, pic, sellerName, sellerVerified, usedFor } = product;
 
     const { user } = useContext(AuthContext);
     console.log(user.displayName)
@@ -13,8 +13,27 @@ const DetailsCard = ({ product }) => {
         userName: user.displayName,
         userEmail: user.email,
         productName: name,
-        price: rePrice
+        price: rePrice,
     }
+
+    //report handler
+    const handleReport = () => {
+
+        fetch(`http://localhost:5000/product/reported/${_id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearrer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+
+    }
+
+
+
     return (
         <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">
             <div className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md" style={{ backgroundImage: `url(${pic})` }}></div>
@@ -68,10 +87,10 @@ const DetailsCard = ({ product }) => {
                 </div>
 
                 <div className='px-5 py-2  text-gray-800 dark:text-gray-200 flex justify-evenly'>
-                    <button class="px-2 py-1 text-xs font-bold text-white  transition-colors duration-300 transform bg-emerald-600 rounded hover:bg-emerald-500 dark:hover:bg-emerald-500 hover:font-bold"><label htmlFor="bookingModal">Book Now</label></button>
+                    <button className="px-2 py-1 text-xs font-bold text-white  transition-colors duration-300 transform bg-emerald-600 rounded hover:bg-emerald-500 dark:hover:bg-emerald-500 hover:font-bold"><label htmlFor="bookingModal">Book Now</label></button>
                     {/* The button to open modal */}
 
-                    <button class="px-2 py-1 text-xs font-bold text-white  transition-colors duration-300 transform bg-red-700 rounded hover:bg-emerald-500 dark:hover:bg-red-600">Report</button>
+                    <button onClick={handleReport} className="px-2 py-1 text-xs font-bold text-white  transition-colors duration-300 transform bg-red-700 rounded hover:bg-emerald-500 dark:hover:bg-red-600">Report</button>
 
                 </div>
             </div >
