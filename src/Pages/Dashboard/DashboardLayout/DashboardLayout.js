@@ -1,11 +1,16 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
-import useAuthorization from "../../../hooks/useAuthorization"
 import Navbar from '../../Shared/Navbar/Navbar';
+import useAuthorization from "../../../hooks/useAuthorization";
+import { useState } from 'react';
+
+
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
-    const [isAdmin] = useAuthorization(user?.email)
+    const [isAuthorized] = useAuthorization(user?.email)
+
+    console.log(isAuthorized)
     return (
         <div>
             <Navbar />
@@ -19,15 +24,26 @@ const DashboardLayout = () => {
                     <ul className="menu p-4 w-80 text-base-content">
                         {/* <li><Link to="/dashboard">My Appointments</Link></li> */}
 
-                        {/* 
-                        buyers:
-                        My Orders 
-                        
-                        Sellers: Add A Product
-                        My Products
-                        */}
+                        {/* For Buyer */}
                         {
-                            isAdmin && <>
+                            isAuthorized == "buyer" && <>
+                                <li><Link to="/dashboard/myOrder">My Order</Link></li>
+
+                            </>
+                        }
+
+                        {/* For Seller */}
+                        {
+                            isAuthorized == "seller" && <>
+                                <li><Link to="/dashboard/addProduct">Add Product</Link></li>
+                                <li><Link to="/dashboard/addProduct">My Product</Link></li>
+
+                            </>
+                        }
+
+                        {/* For Admin */}
+                        {
+                            isAuthorized == "admin" && <>
                                 <li><Link to="/dashboard/allSeller">All Sellers</Link></li>
                                 <li><Link to="/dashboard/allBuyer">All Buyers</Link></li>
                                 <li><Link to="/dashboard/reportedItem">Reported Item</Link></li>

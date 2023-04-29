@@ -7,9 +7,9 @@ import Login from "../../Pages/Login/Login";
 import Home from "../../Pages/HomePage/Home/Home";
 import Products from "../../Pages/Products/Products";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-import DashboardLayout from "../../Pages/Dashboard/DashboardLayout"
 import Try from "../../Pages/Try";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
+import DashboardLayout from "../../Pages/Dashboard/DashboardLayout/DashboardLayout";
 
 
 const router = createBrowserRouter([
@@ -57,13 +57,15 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute>
-            <DashboardLayout />
+
         </PrivateRoute>,
         errorElement: <DisplayError />,
         children: [
             {
                 path: '/dashboard',
-                element:
+                element: <PrivateRoute>
+                    <DashboardLayout />
+                </PrivateRoute>
             }
 
         ]
