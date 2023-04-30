@@ -87,7 +87,7 @@ const MyProduct = () => {
                 <tbody>
 
                     {
-                        products.map((product, i) => <>
+                        products.map((product, i) =>
                             <tr key={product._id}>
                                 <td>{i + 1}</td>
                                 <td>
@@ -133,7 +133,7 @@ const MyProduct = () => {
                                     </div>
                                 </td>
                             </tr>
-                        </>)
+                        )
                     }
 
                 </tbody>

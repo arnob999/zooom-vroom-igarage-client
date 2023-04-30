@@ -66,48 +66,46 @@ const AllBuyer = () => {
                 <tbody>
 
                     {
-                        buyers.map((buyer, i) => <>
-                            <tr key={buyer._id}>
-                                <td>{i + 1}</td>
-                                <td>
-                                    <div className="flex items-center space-x-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
-                                                <img src={nullAvatar} alt="Avatar Tailwind CSS Component" />
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="font-bold">{buyer.name}</div>
-
+                        buyers.map((buyer, i) => <tr key={buyer._id}>
+                            <td>{i + 1}</td>
+                            <td>
+                                <div className="flex items-center space-x-3">
+                                    <div className="avatar">
+                                        <div className="mask mask-squircle w-12 h-12">
+                                            <img src={nullAvatar} alt="Avatar Tailwind CSS Component" />
                                         </div>
                                     </div>
-                                </td>
-                                <td>
-                                    {buyer.email}
-                                </td>
-                                <td className='uppercase text-sm'>{buyer.role}</td>
+                                    <div>
+                                        <div className="font-bold">{buyer.name}</div>
 
-                                <td>
-                                    <button className="btn btn-ghost btn-xs bg-red-600 text-white hover:bg-red-700"> <label htmlFor="deleteBuyer">Delete</label></button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                {buyer.email}
+                            </td>
+                            <td className='uppercase text-sm'>{buyer.role}</td>
 
-                                    {/* Modal */}
-                                    <input type="checkbox" id="deleteBuyer" className="modal-toggle" />
-                                    <div className="modal">
-                                        <div className="modal-box">
-                                            <h3 className="font-bold text-lg">Are You Sure to delete these seller?</h3>
-                                            <p className="py-4">Note: This Action cannot be undone</p>
-                                            <div className="modal-action">
-                                                <label htmlFor="deleteBuyer">
-                                                    <button htmlFor="deleteBuyer" onClick={() => { handleDeleteUser(buyer._id) }} className="btn btn-ghost btn-xs bg-red-600 text-white hover:bg-red-700">Delete</button>
-                                                </label>
+                            <td>
+                                <button className="btn btn-ghost btn-xs bg-red-600 text-white hover:bg-red-700"> <label htmlFor="deleteBuyer">Delete</label></button>
 
-                                                <label htmlFor="deleteBuyer" className="btn btn-xs mt-[2px]">Cancel</label>
-                                            </div>
+                                {/* Modal */}
+                                <input type="checkbox" id="deleteBuyer" className="modal-toggle" />
+                                <div className="modal">
+                                    <div className="modal-box">
+                                        <h3 className="font-bold text-lg">Are You Sure to delete these seller?</h3>
+                                        <p className="py-4">Note: This Action cannot be undone</p>
+                                        <div className="modal-action">
+                                            <label htmlFor="deleteBuyer">
+                                                <button htmlFor="deleteBuyer" onClick={() => { handleDeleteUser(buyer._id) }} className="btn btn-ghost btn-xs bg-red-600 text-white hover:bg-red-700">Delete</button>
+                                            </label>
+
+                                            <label htmlFor="deleteBuyer" className="btn btn-xs mt-[2px]">Cancel</label>
                                         </div>
                                     </div>
-                                </td>
-                            </tr>
-                        </>)
+                                </div>
+                            </td>
+                        </tr>)
                     }
 
                 </tbody>

@@ -7,7 +7,7 @@ const AddProduct = () => {
     const { user } = useContext(AuthContext);
 
     //useForm hook
-    const { register, formState: { errors }, handleSubmit } = useForm()
+    const { register, handleSubmit } = useForm()
 
 
     const handleAddProduct = data => {
@@ -50,7 +50,7 @@ const AddProduct = () => {
                         <select className="select rounded-md select-sm select-bordered"  {...register("catId", {
                             required: "Select A Category"
                         })}>
-                            <option disabled selected>Select Category</option>
+                            <option disabled defaultValue>Select Category</option>
                             <option value={"1"}>City</option>
                             <option value={"2"}>Sports</option>
                             <option value={"3"}>EV</option>
@@ -118,7 +118,7 @@ const AddProduct = () => {
 
                 <div className='flex justify-around mb-3'>
 
-                    <div className="form-control w-full max-w-[250px]">
+                    {/* <div className="form-control w-full max-w-[250px]">
                         <label className="label">
                             <span className="label-text text-white">Condition</span>
                         </label>
@@ -127,12 +127,12 @@ const AddProduct = () => {
                                 required: "Select Your Product Condition"
                             })}
                         >
-                            <option disabled selected>Pick one</option>
+                            <option disabled defaultValue>Pick one</option>
                             <option value={"Almost New"}>Almost New</option>
                             <option value={"Decent"}>Decent</option>
                             <option value={"Rusted"}>Rusted</option>
                         </select>
-                    </div>
+                    </div> */}
 
 
                     <div className="form-control w-full max-w-[250px]">
@@ -149,7 +149,7 @@ const AddProduct = () => {
 
 
                 <div className='flex justify-center mt-7 mb-4'>
-                    <button className='btn btn-sm w-1/3 rounded-lg bg-blue-600 border-blue-600 hover:bg-blue-700 text-white'>Add Product</button>
+                    <input className='btn btn-sm w-1/3 rounded-lg bg-blue-600 border-blue-600 hover:bg-blue-700 text-white' value="Add Product" type="submit" />
                 </div>
             </form>
         </div>

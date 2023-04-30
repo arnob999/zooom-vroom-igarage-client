@@ -1,5 +1,4 @@
 import React from 'react';
-import nullAvatar from "../../../../assets/avatarNull.webp"
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 import Loading from "../../../../component/Loading/Loading"
@@ -66,7 +65,7 @@ const ReportedItem = () => {
                 <tbody>
 
                     {
-                        reportedProducts.map((reportedProduct, i) => <>
+                        reportedProducts.map((reportedProduct, i) =>
                             <tr key={reportedProduct._id}>
                                 <td>{i + 1}</td>
                                 <td>
@@ -109,8 +108,7 @@ const ReportedItem = () => {
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
-                        </>)
+                            </tr>)
                     }
 
                 </tbody>
