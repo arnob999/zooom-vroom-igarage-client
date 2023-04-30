@@ -4,17 +4,16 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import { toast } from "react-hot-toast";
 import Loading from "../Loading/Loading"
 const AnimatedCard = ({ advertisedProduct }) => {
-    console.log(advertisedProduct)
+
     const { name, pic, description, rePrice, orgPrice, _id } = advertisedProduct;
 
-    const { user, loading } = useContext(AuthContext);
+    const { loading } = useContext(AuthContext);
 
     if (loading) {
         return <Loading />
     }
     const booking = {
-        userName: user.displayName,
-        userEmail: user.email,
+        productId: _id,
         productName: name,
         price: rePrice,
     }

@@ -4,13 +4,15 @@ import BookingModal from '../BookingModal/BookingModal';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import VerificationBadge from '../VerificationBadge/VerificationBadge';
+import Loading from '../Loading/Loading';
 
 const DetailsCard = ({ product }) => {
     const { _id, description, condition, name, orgPrice, rePrice, pic, sellerName, sellerEmail, usedFor } = product;
 
-    console.log(product)
 
-    const { user } = useContext(AuthContext);
+
+    const { isLoading } = useContext(AuthContext);
+
 
     const [sellerVerified, setSellerVerified] = useState("")
 
@@ -25,10 +27,9 @@ const DetailsCard = ({ product }) => {
     }, [sellerEmail])
 
     const booking = {
-        userName: user.displayName,
-        userEmail: user.email,
+        productId: _id,
         productName: name,
-        price: rePrice,
+        price: rePrice
     }
 
     //report handler
@@ -54,7 +55,9 @@ const DetailsCard = ({ product }) => {
     }
 
 
-
+    if (isLoading) {
+        return <Loading />
+    }
     return (
         <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">
             <div className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md" style={{ backgroundImage: `url(${pic})` }}></div>
