@@ -44,7 +44,6 @@ const SignUp = () => {
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
                 setSignUpError("")
                 toast.success("Sign Up Complete")
 
@@ -97,8 +96,6 @@ const SignUp = () => {
         googleLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user.displayName)
-                console.log(user.email)
                 const gmailDefaultRole = "buyer";
                 setCreatedUserEmail(user.email);
                 saveUser(user.displayName, user.email, gmailDefaultRole);
@@ -108,11 +105,6 @@ const SignUp = () => {
                 console.error(err);
             })
     }
-
-    //this is a tester to prove that it is working
-    // useEffect(() => {
-    //     console.log(accountType)
-    // }, [accountType])
 
     return (
         <div>

@@ -17,6 +17,7 @@ const AddProduct = () => {
         formData.sellerName = `${user.displayName}`
         formData.report = "false"
         formData.isAdvertised = "false"
+        formData.status = "unsold"
         console.log(formData)
 
         fetch('http://localhost:5000/product', {

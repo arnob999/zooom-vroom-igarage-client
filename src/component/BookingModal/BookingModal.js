@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
+import { AuthContext } from '../../contexts/AuthProvider';
+import Loading from '../Loading/Loading';
 
 const BookingModal = ({ booking }) => {
 
-    const { userName, userEmail, productName, price } = booking;
+    const { productName, price, productId } = booking;
+
+    const { user, isLoading } = useContext(AuthContext)
 
     //toast show
     const handleSubmit = () => {
         toast.success("Your order is booked")
+    }
+
+    if (isLoading) {
+        return <Loading />
     }
     return (
         <div>
@@ -25,8 +33,8 @@ const BookingModal = ({ booking }) => {
 
                             <input type="text" placeholder="Price" disabled value={`${price} $`} className="input input-bordered input-sm w-full rounded-lg mt-3" />
 
-                            <input type="text" placeholder="Your Name" disabled value={userName} className="input input-bordered input-sm w-full rounded-lg mt-3" />
-                            <input type="text" placeholder="Your Email" disabled value={userEmail} className="input input-bordered input-sm w-full rounded-lg mt-3" />
+                            <input type="text" placeholder="Your Name" disabled value={user?.displayName} className="input input-bordered input-sm w-full rounded-lg mt-3" />
+                            <input type="text" placeholder="Your Email" disabled value={user?.email} className="input input-bordered input-sm w-full rounded-lg mt-3" />
 
                             <input type="number" placeholder="Contact Number" className="input input-bordered input-sm w-full rounded-lg mt-3" />
 

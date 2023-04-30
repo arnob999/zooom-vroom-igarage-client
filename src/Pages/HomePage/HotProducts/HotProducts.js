@@ -4,7 +4,6 @@ import Card from '../../../component/Card/Card';
 const HotProducts = () => {
 
     const [advertisedProducts, setAdvertisedProducts] = useState([])
-    console.log(advertisedProducts.length)
     useEffect(() => {
         fetch("http://localhost:5000/advertised")
             .then(res => res.json())

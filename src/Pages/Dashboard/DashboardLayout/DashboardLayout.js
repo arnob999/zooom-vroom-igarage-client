@@ -10,8 +10,7 @@ import nullAvatar from "../../../assets/avatarNull.webp";
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
     const [isAuthorized] = useAuthorization(user?.email)
-    // console.log(user)
-    // console.log(isAuthorized)
+
     return (
         <div>
             <Navbar />
