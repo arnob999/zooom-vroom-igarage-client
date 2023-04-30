@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import Loading from "../Loading/Loading"
 const AnimatedCard = ({ advertisedProduct }) => {
     console.log(advertisedProduct)
-    const { name, pic, description, rePrice, _id } = advertisedProduct;
+    const { name, pic, description, rePrice, orgPrice, _id } = advertisedProduct;
 
     const { user, loading } = useContext(AuthContext);
 
@@ -51,10 +51,18 @@ const AnimatedCard = ({ advertisedProduct }) => {
                     <div className="content">
                         <h3 className="text-black text-xl font-bold font-serif">{name}</h3>
                         <p className=" text-black">
-                            {description.slice(0, 80)}
+                            {description.slice(0, 70)}
                         </p>
 
-                        <div className='px-5 py-2 mt-2 text-gray-800 dark:text-gray-200 flex justify-evenly'>
+                        <div className="px-3 flex justify-center mt-1">
+                            <div className=''>
+                                <span className='font-bold text-sm text-gray-800'>Price: </span>
+                                <span className="font-semibold text-sm text-gray-800">{rePrice}</span>
+                                <span className=" line-through font-medium text-xs text-slate-500 ml-1">{orgPrice}</span>
+                            </div>
+                        </div>
+
+                        <div className='px-5 py-2 text-gray-800 dark:text-gray-200 flex justify-evenly'>
                             <button className="px-2 py-1 text-xs font-bold text-white  transition-colors duration-300 transform bg-emerald-600 rounded hover:bg-emerald-500 dark:hover:bg-emerald-500 hover:font-bold"><label htmlFor="bookingModal">Book Now</label></button>
                             {/* The button to open modal */}
 
@@ -125,7 +133,7 @@ const CardStyle = () => {
       }
       
       .container .card:hover .content {
-         margin-top : 30px;
+         margin-top : 10px;
          visibility : visible;
          opacity : 1;
          transition-delay: 0.2s;  
