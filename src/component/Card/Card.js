@@ -1,17 +1,19 @@
 import React from "react";
-const AnimatedCard = ({ car }) => {
-    const { name } = car
+const AnimatedCard = ({ advertisedProduct }) => {
+    console.log(advertisedProduct)
+    const { name, pic, description } = advertisedProduct
     return (
         <div className="animatedCard">
             <div className="container">
                 <div className="card">
                     <div className="image rounded-lg">
-                        <img className="max-h-[350px] rounded-lg" src="https://i.ibb.co/XVtFpGS/evCar.png" alt="" />
+                        <img className="max-h-[350px] rounded-lg" src={pic} alt="" />
                     </div>
+                    <h3 className="text-black text-2xl font-serif font-bold -mt-6 text-center align-middle name">{name}</h3>
                     <div className="content">
-                        <h3 className="text-black">{name}</h3>
+                        <h3 className="text-black text-xl font-bold font-serif">{name}</h3>
                         <p className=" text-black">
-                            DIn publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.
+                            {description.slice(0, 80)}
                         </p>
                     </div>
                 </div>
@@ -84,10 +86,10 @@ const CardStyle = () => {
     );
 };
 
-export default function Card({ car }) {
+export default function Card({ advertisedProduct }) {
     return (
         <>
-            <AnimatedCard car={car} />
+            <AnimatedCard advertisedProduct={advertisedProduct} />
             <CardStyle />
         </>
     );
