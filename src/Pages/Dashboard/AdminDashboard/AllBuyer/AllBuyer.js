@@ -86,8 +86,25 @@ const AllBuyer = () => {
                                     {buyer.email}
                                 </td>
                                 <td className='uppercase text-sm'>{buyer.role}</td>
+
                                 <td>
-                                    <button onClick={() => { handleDeleteUser(buyer._id) }} className="btn btn-ghost btn-xs bg-red-600 text-white hover:bg-red-700">Delete</button>
+                                    <button className="btn btn-ghost btn-xs bg-red-600 text-white hover:bg-red-700"> <label htmlFor="deleteBuyer">Delete</label></button>
+
+                                    {/* Modal */}
+                                    <input type="checkbox" id="deleteBuyer" className="modal-toggle" />
+                                    <div className="modal">
+                                        <div className="modal-box">
+                                            <h3 className="font-bold text-lg">Are You Sure to delete these seller?</h3>
+                                            <p className="py-4">Note: This Action cannot be undone</p>
+                                            <div className="modal-action">
+                                                <label htmlFor="deleteBuyer">
+                                                    <button htmlFor="deleteBuyer" onClick={() => { handleDeleteUser(buyer._id) }} className="btn btn-ghost btn-xs bg-red-600 text-white hover:bg-red-700">Delete</button>
+                                                </label>
+
+                                                <label htmlFor="deleteBuyer" className="btn btn-xs mt-[2px]">Cancel</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         </>)

@@ -129,8 +129,6 @@ const AllSeller = () => {
                                     </div>
                                 </td>
 
-                                {/* Modal */}
-                                {/* Put this part before </body> tag */}
 
                             </tr>
                         </>)
