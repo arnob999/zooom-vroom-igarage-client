@@ -9,9 +9,34 @@ const BookingModal = ({ booking }) => {
 
     const { user, isLoading } = useContext(AuthContext)
 
+    const bookingData = {
+        productId,
+        productName,
+        price,
+        buyerEmail: user.email
+    }
     //toast show
     const handleSubmit = () => {
         toast.success("Your order is booked")
+        fetch('http://localhost:5000/booking', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem("accessToken")}`
+            },
+            body: JSON.stringify(bookingData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    toast.success("Product Booked")
+                }
+                else {
+                    toast.error("Unknown Error Occured")
+                }
+
+            })
     }
 
     if (isLoading) {
