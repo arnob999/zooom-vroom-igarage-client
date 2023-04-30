@@ -60,6 +60,7 @@ const AllSeller = () => {
                         <th>Name</th>
                         <th>Email</th>
                         <th>Role</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -86,6 +87,15 @@ const AllSeller = () => {
                                     {seller.email}
                                 </td>
                                 <td className='uppercase text-sm'>{seller.role}</td>
+                                <td>
+                                    {
+                                        seller.verified === "true" ? <>
+
+                                        </> : <>
+
+                                        </>
+                                    }
+                                </td>
                                 <td>
                                     <button onClick={() => { handleDeleteUser(seller._id) }} className="btn btn-ghost btn-xs bg-red-600 text-white hover:bg-red-700">Delete</button>
                                 </td>
