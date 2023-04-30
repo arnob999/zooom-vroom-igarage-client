@@ -36,8 +36,15 @@ const BookingModal = ({ booking }) => {
 
 
                     </form>
-                    <div onClick={handleSubmit} className="flex justify-center mt-6 ">
-                        <label htmlFor="bookingModal" className="btn rounded-xl btn-sm transition-colors duration-300 transform bg-emerald-500 hover:bg-emerald-400 hover:font-bold text-white">Submit</label>
+                    <div className='flex justify-center'>
+                        <>
+                            <div onClick={handleSubmit} className="flex justify-center mt-6 mr-4 ">
+                                <label htmlFor="bookingModal" className="btn rounded-xl btn-sm transition-colors duration-300 transform bg-emerald-500 hover:bg-emerald-400 hover:font-bold text-white">Submit</label>
+                            </div>
+                            <div className="flex justify-center mt-6 ">
+                                <label htmlFor="bookingModal" className="btn rounded-xl btn-sm transition-colors duration-300 transform bg-red-500 hover:bg-red-400 hover:font-bold text-white">Cancel</label>
+                            </div>
+                        </>
                     </div>
                 </div>
             </div>

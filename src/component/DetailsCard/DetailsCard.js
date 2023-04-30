@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 import VerificationBadge from '../VerificationBadge/VerificationBadge';
 
 const DetailsCard = ({ product }) => {
-    const { _id, description, condition, location, name, orgPrice, rePrice, pic, sellerName, sellerEmail, usedFor } = product;
+    const { _id, description, condition, name, orgPrice, rePrice, pic, sellerName, sellerEmail, usedFor } = product;
 
     console.log(product)
 
@@ -14,6 +14,7 @@ const DetailsCard = ({ product }) => {
 
     const [sellerVerified, setSellerVerified] = useState("")
 
+    //to ensure seller is verified or not to show the badge
     useEffect(() => {
         fetch(`http://localhost:5000/users/verification/${sellerEmail}`)
             .then(res => res.json())

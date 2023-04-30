@@ -1,7 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
+import BookingModal from "../BookingModal/BookingModal";
+import { AuthContext } from "../../contexts/AuthProvider";
+import { toast } from "react-hot-toast";
+import Loading from "../Loading/Loading"
 const AnimatedCard = ({ advertisedProduct }) => {
     console.log(advertisedProduct)
-    const { name, pic, description } = advertisedProduct
+    const { name, pic, description, rePrice, _id } = advertisedProduct;
+
+    const { user, loading } = useContext(AuthContext);
+
+    if (loading) {
+        return <Loading />
+    }
+    const booking = {
+        userName: user.displayName,
+        userEmail: user.email,
+        productName: name,
+        price: rePrice,
+    }
+
+    //report handler
+    const handleReport = () => {
+
+        fetch(`http://localhost:5000/product/reported/${_id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearrer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    toast.success("Reported to Admin")
+                }
+                else if (data.modifiedCount === 0) {
+                    toast.error("This item is already reported")
+                }
+            })
+
+    }
     return (
         <div className="animatedCard">
             <div className="container">
@@ -15,6 +53,17 @@ const AnimatedCard = ({ advertisedProduct }) => {
                         <p className=" text-black">
                             {description.slice(0, 80)}
                         </p>
+
+                        <div className='px-5 py-2 mt-2 text-gray-800 dark:text-gray-200 flex justify-evenly'>
+                            <button className="px-2 py-1 text-xs font-bold text-white  transition-colors duration-300 transform bg-emerald-600 rounded hover:bg-emerald-500 dark:hover:bg-emerald-500 hover:font-bold"><label htmlFor="bookingModal">Book Now</label></button>
+                            {/* The button to open modal */}
+
+                            <button onClick={handleReport} className="px-2 py-1 text-xs font-bold text-white  transition-colors duration-300 transform bg-red-700 rounded hover:bg-emerald-500 dark:hover:bg-red-600">Report</button>
+
+                        </div >
+                        <BookingModal booking={booking} />
+
+
                     </div>
                 </div>
             </div>
