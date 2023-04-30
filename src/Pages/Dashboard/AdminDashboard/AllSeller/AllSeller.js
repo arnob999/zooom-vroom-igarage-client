@@ -110,13 +110,35 @@ const AllSeller = () => {
                                     }
                                 </td>
                                 <td>
-                                    <button onClick={() => { handleDeleteUser(seller._id) }} className="btn btn-ghost btn-xs bg-red-600 text-white hover:bg-red-700">Delete</button>
+                                    <button className="btn btn-ghost btn-xs bg-red-600 text-white hover:bg-red-700"> <label htmlFor="delete-modal">Delete</label></button>
+
+                                    {/* Modal */}
+                                    <input type="checkbox" id="delete-modal" className="modal-toggle" />
+                                    <div className="modal">
+                                        <div className="modal-box">
+                                            <h3 className="font-bold text-lg">Are You Sure to delete these seller?</h3>
+                                            <p className="py-4">Note: This Action cannot be undone</p>
+                                            <div className="modal-action">
+                                                <label htmlFor="delete-modal">
+                                                    <button htmlFor="delete-modal" onClick={() => { handleDeleteUser(seller._id) }} className="btn btn-ghost btn-xs bg-red-600 text-white hover:bg-red-700">Delete</button>
+                                                </label>
+
+                                                <label htmlFor="delete-modal" className="btn btn-xs mt-[2px]">Cancel</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
+
+                                {/* Modal */}
+                                {/* Put this part before </body> tag */}
+
                             </tr>
                         </>)
                     }
 
                 </tbody>
+
+
 
 
 
