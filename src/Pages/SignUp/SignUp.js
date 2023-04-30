@@ -101,7 +101,8 @@ const SignUp = () => {
                 console.log(user.email)
                 const gmailDefaultRole = "buyer";
                 setCreatedUserEmail(user.email);
-                saveUser(user.displayName, user.email, gmailDefaultRole)
+                saveUser(user.displayName, user.email, gmailDefaultRole);
+                navigate("/")
             })
             .catch(err => {
                 console.error(err);
