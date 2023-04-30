@@ -3,10 +3,23 @@ import nullAvatar from "../../../../assets/avatarNull.webp"
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 import Loading from "../../../../component/Loading/Loading"
-
+import VerificationBadge from "../../../../component/VerificationBadge/VerificationBadge"
 
 const AllSeller = () => {
-
+    const handleVerification = (id) => {
+        console.log(id)
+        fetch(`http://localhost:5000/user/verification/${id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearrer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                refetch();
+                toast.success("Seller Verified Successfully")
+            })
+    }
     const { data: sellers, isLoading, refetch } = useQuery({
         queryKey: ["sellers"],
         queryFn: async () => {
@@ -90,9 +103,9 @@ const AllSeller = () => {
                                 <td>
                                     {
                                         seller.verified === "true" ? <>
-
+                                            <VerificationBadge />
                                         </> : <>
-
+                                            <button onClick={() => { handleVerification(seller._id) }} className='btn btn-xs rounded-xl text-white bg-orange-600 hover:bg-orange-700'>Verify</button>
                                         </>
                                     }
                                 </td>
