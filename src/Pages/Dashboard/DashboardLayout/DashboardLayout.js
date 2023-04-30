@@ -4,12 +4,14 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 import Navbar from '../../Shared/Navbar/Navbar';
 import useAuthorization from "../../../hooks/useAuthorization/useAuthorization";
 import brandLogo from "../../../assets/icon.png";
-import nullAvatar from "../../../assets/avatarNull.webp"
+import nullAvatar from "../../../assets/avatarNull.webp";
+
+
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
     const [isAuthorized] = useAuthorization(user?.email)
-    console.log(user)
-    console.log(isAuthorized)
+    // console.log(user)
+    // console.log(isAuthorized)
     return (
         <div>
             <Navbar />
@@ -31,7 +33,7 @@ const DashboardLayout = () => {
 
                     <div class="flex flex-col justify-between flex-1 mt-6">
                         <nav>
-                            {/* For Buyer */}
+                            {/* For Buyer Dashboard*/}
                             {
                                 isAuthorized === "buyer" && <Link to={"/dashboard/myOrder"} className="flex items-center px-4 py-2 text-gray-700 bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-200 mt-3" >
                                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
