@@ -63,43 +63,34 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute>
-
+            <DashboardLayout />
         </PrivateRoute>,
         errorElement: <DisplayError />,
         children: [
             {
-                path: '/dashboard',
-                element: <PrivateRoute>
-                    <DashboardLayout />
-                </PrivateRoute>,
-                children: [
-                    {
-                        path: '/dashboard/myOrder',
-                        element: <MyOrder />
-                    },
-                    {
-                        path: '/dashboard/addProduct',
-                        element: <AddProduct />
-                    },
-                    {
-                        path: '/dashboard/myProduct',
-                        element: <MyProduct />
-                    },
-                    {
-                        path: '/dashboard/allSeller',
-                        element: <AllSeller />
-                    },
-                    {
-                        path: '/dashboard/allBuyer',
-                        element: <AllBuyer />
-                    },
-                    {
-                        path: '/dashboard/reportedItem',
-                        element: <ReportedItem></ReportedItem>
-                    },
-                ]
-            }
-
+                path: '/dashboard/myOrder',
+                element: <MyOrder />
+            },
+            {
+                path: '/dashboard/addProduct',
+                element: <AddProduct />
+            },
+            {
+                path: '/dashboard/myProduct',
+                element: <MyProduct />
+            },
+            {
+                path: '/dashboard/allSeller',
+                element: <AllSeller />
+            },
+            {
+                path: '/dashboard/allBuyer',
+                element: <AllBuyer />
+            },
+            {
+                path: '/dashboard/reportedItem',
+                element: <ReportedItem></ReportedItem>
+            },
         ]
     }
 

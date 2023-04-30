@@ -23,15 +23,14 @@ const DashboardLayout = () => {
 
                         {/* For Buyer */}
                         {
-                            isAuthorized == "buyer" && <>
+                            isAuthorized === "buyer" && <>
                                 <li><Link to="/dashboard/myOrder">My Order</Link></li>
-
                             </>
                         }
 
                         {/* For Seller */}
                         {
-                            isAuthorized == "seller" && <>
+                            isAuthorized === "seller" && <>
                                 <li><Link to="/dashboard/addProduct">Add Product</Link></li>
                                 <li><Link to="/dashboard/myProduct">My Product</Link></li>
 
@@ -40,7 +39,7 @@ const DashboardLayout = () => {
 
                         {/* For Admin */}
                         {
-                            isAuthorized == "admin" && <>
+                            isAuthorized === "admin" && <>
                                 <li><Link to="/dashboard/allSeller">All Sellers</Link></li>
                                 <li><Link to="/dashboard/allBuyer">All Buyers</Link></li>
                                 <li><Link to="/dashboard/reportedItem">Reported Item</Link></li>

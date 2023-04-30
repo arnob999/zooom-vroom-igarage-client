@@ -5,7 +5,12 @@ const useAuthorization = email => {
     const [isUserLoading, setIsUserLoading] = useState(true);
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/admin/${email}`)
+            fetch(`http://localhost:5000/users/authorization/${email}`,
+                {
+                    headers: {
+                        authorization: `bearrer ${localStorage.getItem('accessToken')}`
+                    }
+                })
                 .then(res => res.json())
                 .then(data => {
                     setIsAuthorized(data.isAuthorized);
