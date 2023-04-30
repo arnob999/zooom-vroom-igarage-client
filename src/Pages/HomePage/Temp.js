@@ -24,3 +24,39 @@ const Temp = () => {
 }
 
 export default Temp;
+
+
+<div className="drawer-side">
+    <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
+    <ul className="menu p-4 w-80 text-base-content">
+
+
+        {/* For Buyer */}
+        {
+            isAuthorized === "buyer" && <>
+                <li><Link to="/dashboard/myOrder">My Order</Link></li>
+            </>
+        }
+
+        {/* For Seller */}
+        {
+            isAuthorized === "seller" && <>
+                <li><Link to="/dashboard/addProduct">Add Product</Link></li>
+                <li><Link to="/dashboard/myProduct">My Product</Link></li>
+
+            </>
+        }
+
+        {/* For Admin */}
+        {
+            isAuthorized === "admin" && <>
+                <li><Link to="/dashboard/allSeller">All Sellers</Link></li>
+                <li><Link to="/dashboard/allBuyer">All Buyers</Link></li>
+                <li><Link to="/dashboard/reportedItem">Reported Item</Link></li>
+
+            </>
+        }
+
+    </ul>
+
+</div>
