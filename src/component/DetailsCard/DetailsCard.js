@@ -6,8 +6,9 @@ import { toast } from 'react-hot-toast';
 import VerificationBadge from '../VerificationBadge/VerificationBadge';
 
 const DetailsCard = ({ product }) => {
-    const { _id, description, date, location, name, orgPrice, rePrice, pic, sellerName, sellerEmail, usedFor } = product;
+    const { _id, description, condition, location, name, orgPrice, rePrice, pic, sellerName, sellerEmail, usedFor } = product;
 
+    console.log(product)
 
     const { user } = useContext(AuthContext);
 
@@ -91,11 +92,10 @@ const DetailsCard = ({ product }) => {
 
                         }
                     </p>
-                    <div className='flex justify-between px-2'>
+                    <div className='flex justify-center px-2'>
                         <p className=''>
-                            On: {date}
+                            Condition: {condition}
                         </p>
-                        <p>Location : {location}</p>
                     </div>
                 </div>
 

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../../contexts/AuthProvider';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 
 const AddProduct = () => {
 
@@ -17,6 +18,19 @@ const AddProduct = () => {
         formData.report = "false"
         formData.isAdvertised = "false"
         console.log(formData)
+
+        fetch('http://localhost:5000/product', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem("accessToken")}`
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success("Product Added Successfully")
+            })
     }
     return (
         <div className='w-3/4 mx-auto rounded-xl py-7 dark:bg-slate-600 bg-slate-600 '>
