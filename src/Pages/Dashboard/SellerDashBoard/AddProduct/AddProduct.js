@@ -11,7 +11,12 @@ const AddProduct = () => {
 
 
     const handleAddProduct = data => {
-        console.log(data)
+        const formData = data;
+        formData.sellerEmail = `${user.email}`
+        formData.sellerName = `${user.displayName}`
+        formData.report = "false"
+        formData.isAdvertised = "false"
+        console.log(formData)
     }
     return (
         <div className='w-3/4 mx-auto rounded-xl py-7 dark:bg-slate-600 bg-slate-600 '>
@@ -76,18 +81,14 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="label-text text-white">Seller Name</span>
                         </label>
-                        <input type="text" disabled defaultValue={user.displayName} placeholder="Type here" className="input input-bordered input-sm rounded-md"  {...register("sellerName", {
-                            required: "Seller Name is required"
-                        })} />
+                        <input type="text" disabled defaultValue={user.displayName} placeholder="Type here" className="input input-bordered input-sm rounded-md" />
                     </div>
 
                     <div className="form-control w-full max-w-[250px]">
                         <label className="label">
                             <span className="label-text text-white">Email Address</span>
                         </label>
-                        <input type="text" defaultValue={user.email} disabled placeholder="user@gmail.com" className="input input-bordered input-sm rounded-md"  {...register("sellerEmail", {
-                            required: "Email Address is required"
-                        })} />
+                        <input type="text" defaultValue={user.email} disabled placeholder="user@gmail.com" className="input input-bordered input-sm rounded-md" />
                     </div>
                 </div>
 
@@ -118,7 +119,7 @@ const AddProduct = () => {
 
                 <div className='flex justify-around mb-3'>
 
-                    {/* <div className="form-control w-full max-w-[250px]">
+                    <div className="form-control w-full max-w-[250px]">
                         <label className="label">
                             <span className="label-text text-white">Condition</span>
                         </label>
@@ -132,7 +133,7 @@ const AddProduct = () => {
                             <option value={"Decent"}>Decent</option>
                             <option value={"Rusted"}>Rusted</option>
                         </select>
-                    </div> */}
+                    </div>
 
 
                     <div className="form-control w-full max-w-[250px]">
