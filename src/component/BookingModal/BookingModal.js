@@ -3,7 +3,7 @@ import { toast } from 'react-hot-toast';
 
 const BookingModal = ({ booking }) => {
 
-    const { userName, userEmail, productName, price, _id, } = booking;
+    const { userName, userEmail, productName, price } = booking;
 
     //toast show
     const handleSubmit = () => {

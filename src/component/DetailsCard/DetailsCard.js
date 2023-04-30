@@ -20,7 +20,7 @@ const DetailsCard = ({ product }) => {
                 console.log(data[0].verified)
                 setSellerVerified(data[0].verified)
             })
-    }, [])
+    }, [sellerEmail])
 
     const booking = {
         userName: user.displayName,
