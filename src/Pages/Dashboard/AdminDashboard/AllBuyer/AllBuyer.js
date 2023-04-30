@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import nullAvatar from "../../../../assets/avatarNull.webp"
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
@@ -6,14 +6,6 @@ import Loading from "../../../../component/Loading/Loading"
 
 
 const AllBuyer = () => {
-
-    const [deletingUser, setDeletingUser] = useState(null);
-
-    const closeModal = () => {
-        setDeletingUser(null);
-    }
-
-    // const [buyers, setBuyers] = useState([])
 
     const { data: buyers, isLoading, refetch } = useQuery({
         queryKey: ["buyers"],
@@ -37,18 +29,6 @@ const AllBuyer = () => {
         }
     })
 
-    // useEffect(() => {
-    //     fetch("http://localhost:5000/users/authorized/buyer", {
-    //         headers: {
-    //             authorization: `bearrer ${localStorage.getItem('accessToken')}`
-    //         }
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data)
-    //             setBuyers(data)
-    //         })
-    // }, [])
 
     const handleDeleteUser = (id) => {
         console.log(id);
