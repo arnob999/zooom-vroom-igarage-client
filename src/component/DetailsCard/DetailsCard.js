@@ -29,7 +29,8 @@ const DetailsCard = ({ product }) => {
     const booking = {
         productId: _id,
         productName: name,
-        price: rePrice
+        price: rePrice,
+        pic
     }
 
     //report handler

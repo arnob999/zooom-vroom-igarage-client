@@ -5,7 +5,7 @@ import Loading from '../Loading/Loading';
 
 const BookingModal = ({ booking }) => {
 
-    const { productName, price, productId } = booking;
+    const { productName, price, productId, pic } = booking;
 
     const { user, isLoading } = useContext(AuthContext)
 
@@ -13,11 +13,12 @@ const BookingModal = ({ booking }) => {
         productId,
         productName,
         price,
-        buyerEmail: user.email
+        buyerEmail: user.email,
+        pic,
+        payment: "false"
     }
     //toast show
     const handleSubmit = () => {
-        toast.success("Your order is booked")
         fetch('http://localhost:5000/booking', {
             method: 'POST',
             headers: {

@@ -16,6 +16,7 @@ const AnimatedCard = ({ advertisedProduct }) => {
         productId: _id,
         productName: name,
         price: rePrice,
+        pic
     }
 
     //report handler
