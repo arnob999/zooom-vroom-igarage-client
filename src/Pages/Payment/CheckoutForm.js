@@ -99,7 +99,8 @@ const CheckoutForm = ({ booking }) => {
         setProcessing(false)
     }
     return (
-        <>
+        <div className=''>
+
             <form onSubmit={handleSubmit}>
                 <CardElement
                     options={{
@@ -129,8 +130,10 @@ const CheckoutForm = ({ booking }) => {
                     <p>Your TrxID: <span className='font-bold'>{transactionId}</span></p>
                 </div>
             }
-            <p className='text-lg mt-7'>Go to <Link to={'/dashboard/myOrder'} className='btn btn-sm btn-secondary'>My Order</Link></p>
-        </>
+            <p className='text-lg mt-7 font-serif'>Go to <Link to={'/dashboard/myOrder'} className='btn btn-sm bg-blue-600 text-white rounded-xl'>My Order</Link></p>
+
+        </div>
+
     );
 };
 
