@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 
 const MyOrder = () => {
     const { user } = useContext(AuthContext);
-    console.log(user)
     const { data: myOrders, isLoading, refetch } = useQuery({
         queryKey: ["myOrders"],
         queryFn: async () => {

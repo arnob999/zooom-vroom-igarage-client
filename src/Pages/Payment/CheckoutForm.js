@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({ booking }) => {
     const { productName, price, pic, buyerName, buyerEmail, productId, payment, } = booking
@@ -12,6 +13,7 @@ const CheckoutForm = ({ booking }) => {
     const [success, setSuccess] = useState('')
     const [transactionId, setTransactionId] = useState('')
 
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('http://localhost:5000/create-payment-intents', {
@@ -95,6 +97,23 @@ const CheckoutForm = ({ booking }) => {
                         setTransactionId(paymentIntent.id)
                     }
                 })
+
+
+            fetch(`http://localhost:5000/payment/success/${productId}`, {
+                method: 'PUT',
+                headers: {
+                    authorization: `bearrer ${localStorage.getItem('accessToken')}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
+                        toast.success("Payment Successfull")
+                        navigate('/dashbaord/myOrder')
+                    }
+                })
+
+
         }
 
         //syncinc with booking db
@@ -120,9 +139,12 @@ const CheckoutForm = ({ booking }) => {
                         },
                     }}
                 />
-                <button className='btn btn-sm mt-4 bg-violet-600 hover:bg-violet-700' type="submit" disabled={!stripe || !clientSecret || processing}>
-                    Payment with Stripe
-                </button>
+                <div className='flex justify-center'>
+                    <button className='btn btn-sm my-11 text-center bg-violet-500 hover:bg-violet-600 text-white rounded-xl' type="submit" disabled={!stripe || !clientSecret || processing}>
+                        Payment with Stripe
+                    </button>
+                </div>
+
             </form>
 
             <p className="text-red-500">{cardError}</p>

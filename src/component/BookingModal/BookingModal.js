@@ -13,8 +13,8 @@ const BookingModal = ({ booking }) => {
         productId,
         productName,
         price,
-        buyerEmail: user.email,
-        buyerName: user.displayName,
+        buyerEmail: user?.email,
+        buyerName: user?.displayName,
         pic,
         payment: "false"
     }
