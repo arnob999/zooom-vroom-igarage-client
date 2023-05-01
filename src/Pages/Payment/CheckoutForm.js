@@ -84,7 +84,7 @@ const CheckoutForm = ({ booking }) => {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
-                    authorization: `bearer ${localStorage.getItem("accessToken")}`
+                    authorization: `bearrer ${localStorage.getItem("accessToken")}`
                 },
                 body: JSON.stringify(payment)
             })
@@ -96,6 +96,8 @@ const CheckoutForm = ({ booking }) => {
                     }
                 })
         }
+
+        //syncinc with booking db
         setProcessing(false)
     }
     return (
