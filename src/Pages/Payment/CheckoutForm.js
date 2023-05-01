@@ -109,7 +109,7 @@ const CheckoutForm = ({ booking }) => {
                 .then(data => {
                     if (data.acknowledged) {
                         toast.success("Payment Successfull")
-                        navigate('/dashbaord/myOrder')
+                        navigate('/dashboard/myOrder')
                     }
                 })
 
