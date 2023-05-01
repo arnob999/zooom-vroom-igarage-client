@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 import Loading from "../../../../component/Loading/Loading"
 import { AuthContext } from '../../../../contexts/AuthProvider';
+import { Link } from 'react-router-dom';
 
 
 const MyOrder = () => {
@@ -65,14 +66,19 @@ const MyOrder = () => {
                                     </div>
                                 </td>
                                 <td>
-                                    {myOrder.price}
+                                    {myOrder.price}k$
                                 </td>
 
                                 <td>
-                                    <button className="btn btn-ghost btn-xs bg-red-600 text-white hover:bg-red-700">Pay</button>
-
-
-
+                                    {
+                                        myOrder.payment === "false"
+                                            ?
+                                            <Link to={`/dashboard/payment/${myOrder._id}`}>
+                                                <button className="btn btn-ghost btn-xs bg-violet-500 text-white hover:bg-violet-600">Pay</button>
+                                            </Link>
+                                            :
+                                            <p className='text-green-600 font-semibold text-sm'>Paid</p>
+                                    }
                                 </td>
                             </tr>
                         )

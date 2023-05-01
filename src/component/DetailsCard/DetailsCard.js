@@ -69,10 +69,10 @@ const DetailsCard = ({ product }) => {
                 </h3>
 
                 <div className="px-3 flex justify-center py-2 bg-gray-200 dark:bg-gray-700">
-                    <div className=''>
+                    <div className='font-sans'>
                         <span className='font-bold text-gray-800 dark:text-gray-200'>Price: </span>
-                        <span className="font-semibold text-gray-800 dark:text-gray-200">{rePrice}</span>
-                        <span className=" line-through font-medium text-sm text-slate-500 ml-1">{orgPrice}</span>
+                        <span className="font-semibold text-gray-800 dark:text-gray-200">{rePrice}k $</span>
+                        <span className=" line-through font-medium text-sm text-slate-500 ml-1">{orgPrice}k</span>
                     </div>
                 </div>
 

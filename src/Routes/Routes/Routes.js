@@ -16,6 +16,7 @@ import MyProduct from "../../Pages/Dashboard/SellerDashBoard/MyProduct/MyProduct
 import AllSeller from "../../Pages/Dashboard/AdminDashboard/AllSeller/AllSeller"
 import AllBuyer from "../../Pages/Dashboard/AdminDashboard/AllBuyer/AllBuyer"
 import ReportedItem from "../../Pages/Dashboard/AdminDashboard/ReportedItem/ReportedItem"
+import Payment from "../../Pages/Payment/Payment";
 
 
 const router = createBrowserRouter([
@@ -90,6 +91,15 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/reportedItem',
                 element: <ReportedItem></ReportedItem>
+            },
+            {
+                path: '/dashboard/payment/:bookingId',
+                element: <Payment />,
+                loader: ({ params }) => fetch(`http://localhost:5000/bookingId/${params.bookingId}`, {
+                    headers: {
+                        authorization: `bearrer ${localStorage.getItem('accessToken')}`
+                    }
+                })
             },
         ]
     }

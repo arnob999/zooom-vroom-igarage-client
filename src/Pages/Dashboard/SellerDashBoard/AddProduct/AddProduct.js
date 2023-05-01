@@ -112,9 +112,9 @@ const AddProduct = () => {
                 <div className='flex justify-around mb-3'>
                     <div className="form-control w-full max-w-[250px]">
                         <label className="label">
-                            <span className="label-text text-white">Orginal Price(in $)</span>
+                            <span className="label-text text-white">Orginal Price(in k $)</span>
                         </label>
-                        <input type="text" placeholder="Market Value Here" className="input input-bordered input-sm rounded-md"  {...register("orgPrice", {
+                        <input type="number" placeholder="Market Value Here" className="input input-bordered input-sm rounded-md"  {...register("orgPrice", {
                             required: "Market Price here"
                         })} />
                     </div>
@@ -122,9 +122,9 @@ const AddProduct = () => {
 
                     <div className="form-control w-full max-w-[250px]">
                         <label className="label">
-                            <span className="label-text text-white">Resell Price (in $)</span>
+                            <span className="label-text text-white">Resell Price (in k $)</span>
                         </label>
-                        <input type="text" placeholder="Asking Price Here" className="input input-bordered input-sm rounded-md"  {...register("rePrice", {
+                        <input type="number" placeholder="Asking Price Here" className="input input-bordered input-sm rounded-md"  {...register("rePrice", {
                             required: "Asking Price here"
                         })} />
                     </div>

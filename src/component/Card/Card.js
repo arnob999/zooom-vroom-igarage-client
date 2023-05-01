@@ -57,8 +57,8 @@ const AnimatedCard = ({ advertisedProduct }) => {
                         <div className="px-3 flex justify-center mt-1">
                             <div className=''>
                                 <span className='font-bold text-sm text-gray-800'>Price: </span>
-                                <span className="font-semibold text-sm text-gray-800">{rePrice}</span>
-                                <span className=" line-through font-medium text-xs text-slate-500 ml-1">{orgPrice}</span>
+                                <span className="font-semibold text-sm text-gray-800">{rePrice}k$</span>
+                                <span className=" line-through font-medium text-xs text-slate-500 ml-1">{orgPrice}k</span>
                             </div>
                         </div>
 

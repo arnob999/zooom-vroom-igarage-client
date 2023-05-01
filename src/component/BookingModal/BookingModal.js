@@ -14,6 +14,7 @@ const BookingModal = ({ booking }) => {
         productName,
         price,
         buyerEmail: user.email,
+        buyerName: user.displayName,
         pic,
         payment: "false"
     }
@@ -57,7 +58,7 @@ const BookingModal = ({ booking }) => {
                         <div className='max-w-sm mx-auto'>
                             <input type="text" placeholder="Product Name" disabled value={productName} className="input input-bordered input-sm w-full rounded-lg mt-3" />
 
-                            <input type="text" placeholder="Price" disabled value={`${price} $`} className="input input-bordered input-sm w-full rounded-lg mt-3" />
+                            <input type="text" placeholder="Price" disabled value={`${price}k $`} className="input input-bordered input-sm w-full rounded-lg mt-3" />
 
                             <input type="text" placeholder="Your Name" disabled value={user?.displayName} className="input input-bordered input-sm w-full rounded-lg mt-3" />
                             <input type="text" placeholder="Your Email" disabled value={user?.email} className="input input-bordered input-sm w-full rounded-lg mt-3" />
