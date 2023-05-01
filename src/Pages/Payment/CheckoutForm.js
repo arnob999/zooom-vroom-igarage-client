@@ -16,7 +16,7 @@ const CheckoutForm = ({ booking }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intents', {
+        fetch('https://zooom-vroom-i-garage-server.vercel.app/create-payment-intents', {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -82,7 +82,7 @@ const CheckoutForm = ({ booking }) => {
                 bookingId: productId
             }
             //u should store payment info to database
-            fetch("http://localhost:5000/payments", {
+            fetch("https://zooom-vroom-i-garage-server.vercel.app/payments", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
@@ -99,7 +99,7 @@ const CheckoutForm = ({ booking }) => {
                 })
 
 
-            fetch(`http://localhost:5000/payment/success/${productId}`, {
+            fetch(`https://zooom-vroom-i-garage-server.vercel.app/payment/success/${productId}`, {
                 method: 'PUT',
                 headers: {
                     authorization: `bearrer ${localStorage.getItem('accessToken')}`

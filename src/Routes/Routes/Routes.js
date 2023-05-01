@@ -47,7 +47,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <Products />
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://zooom-vroom-i-garage-server.vercel.app/category/${params.id}`)
             },
 
             {
@@ -95,7 +95,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:bookingId',
                 element: <Payment />,
-                loader: ({ params }) => fetch(`http://localhost:5000/bookingId/${params.bookingId}`, {
+                loader: ({ params }) => fetch(`https://zooom-vroom-i-garage-server.vercel.app/bookingId/${params.bookingId}`, {
                     headers: {
                         authorization: `bearrer ${localStorage.getItem('accessToken')}`
                     }
