@@ -1,8 +1,12 @@
 
-# zooom-vrooom-iGarage
+## zooom-vrooom-iGarage
 
-A reselling website
+A Car Reselling Website
 
+## Admin
+adminEmail: arnob196@gmail.com
+
+adminPassword: zxcvbnmA5*
 
 
 
@@ -31,7 +35,3 @@ A reselling website
 - react-hook-form
 - react-hot-toast
 
-## Admin
-adminEmail: arnob196@gmail.com
-
-adminPassword: zxcvbnmA5*
