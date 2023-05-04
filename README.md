@@ -30,3 +30,8 @@ A reselling website
 - tanstack query
 - react-hook-form
 - react-hot-toast
+
+## Admin
+adminEmail: arnob196@gmail.com
+
+adminPassword: zxcvbnmA5*
