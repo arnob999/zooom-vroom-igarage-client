@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 import Loading from '../../component/Loading/Loading';
 import useDashAuth from '../../hooks/useDashAuth/useDashAuth';
-import NotFound from '../../Pages/NotFound/NotFound';
+import AuthorizationFailed from '../../Pages/AuthorizationFailed/AuthorizationFailed';
 
 const DashAuth = ({ children, role }) => {
 
@@ -18,7 +18,7 @@ const DashAuth = ({ children, role }) => {
         return children;
     }
     if (!isAuthorized) {
-        return <NotFound />
+        return <AuthorizationFailed />
     }
 
 };
