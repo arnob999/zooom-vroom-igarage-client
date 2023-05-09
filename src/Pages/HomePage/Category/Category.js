@@ -5,7 +5,7 @@ const Category = () => {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
-        fetch("https://zooom-vroom-i-garage-server.vercel.app/category")
+        fetch("http://localhost:5000/category")
             .then(res => res.json())
             .then(data => {
                 setCategories(data)

@@ -17,6 +17,7 @@ import AllSeller from "../../Pages/Dashboard/AdminDashboard/AllSeller/AllSeller"
 import AllBuyer from "../../Pages/Dashboard/AdminDashboard/AllBuyer/AllBuyer"
 import ReportedItem from "../../Pages/Dashboard/AdminDashboard/ReportedItem/ReportedItem"
 import Payment from "../../Pages/Payment/Payment";
+import DashAuth from "../DashAuth/DashAuth";
 
 
 const router = createBrowserRouter([
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <Products />
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`https://zooom-vroom-i-garage-server.vercel.app/category/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
             },
 
             {
@@ -68,34 +69,51 @@ const router = createBrowserRouter([
         </PrivateRoute>,
         errorElement: <DisplayError />,
         children: [
+            //buyer dashbaord
             {
                 path: '/dashboard/myOrder',
-                element: <MyOrder />
+                element: <DashAuth role="buyer">
+                    <MyOrder />
+                </DashAuth>
             },
+            //seller dashboard
             {
                 path: '/dashboard/addProduct',
-                element: <AddProduct />
+                element: <DashAuth role="seller">
+                    <AddProduct />
+                </DashAuth>
             },
             {
                 path: '/dashboard/myProduct',
-                element: <MyProduct />
+                element: <DashAuth role="seller">
+                    <MyProduct />
+                </DashAuth>
             },
+            //admin dashboard
             {
                 path: '/dashboard/allSeller',
-                element: <AllSeller />
+                element: <DashAuth role="admin">
+                    <AllSeller />
+                </DashAuth>
             },
             {
                 path: '/dashboard/allBuyer',
-                element: <AllBuyer />
+                element: <DashAuth role="admin">
+                    <AllBuyer />
+                </DashAuth>
             },
             {
                 path: '/dashboard/reportedItem',
-                element: <ReportedItem></ReportedItem>
+                element: <DashAuth role="admin">
+                    <ReportedItem></ReportedItem>
+                </DashAuth>
             },
             {
                 path: '/dashboard/payment/:bookingId',
-                element: <Payment />,
-                loader: ({ params }) => fetch(`https://zooom-vroom-i-garage-server.vercel.app/bookingId/${params.bookingId}`, {
+                element: <DashAuth role="buyer">
+                    <Payment />
+                </DashAuth>,
+                loader: ({ params }) => fetch(`http://localhost:5000/bookingId/${params.bookingId}`, {
                     headers: {
                         authorization: `bearrer ${localStorage.getItem('accessToken')}`
                     }

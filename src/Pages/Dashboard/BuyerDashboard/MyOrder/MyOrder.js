@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { toast } from 'react-hot-toast';
 import Loading from "../../../../component/Loading/Loading"
 import { AuthContext } from '../../../../contexts/AuthProvider';
 import { Link } from 'react-router-dom';
@@ -12,7 +11,7 @@ const MyOrder = () => {
         queryKey: ["myOrders"],
         queryFn: async () => {
             try {
-                const res = await fetch(`https://zooom-vroom-i-garage-server.vercel.app/booking/${user?.email}`, {
+                const res = await fetch(`http://localhost:5000/booking/${user?.email}`, {
                     headers: {
                         authorization: `bearrer ${localStorage.getItem('accessToken')}`
                     }

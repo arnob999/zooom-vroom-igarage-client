@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 
-const useAuthorization = email => {
-    const [isAuthorized, setIsAuthorized] = useState("");
+const useDashAuth = (email, role) => {
+    const [isAuthorized, setIsAuthorized] = useState(false);
     const [isUserLoading, setIsUserLoading] = useState(true);
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/authorization/${email}`,
+            fetch(`http://localhost:5000/role/authorization/${role}/${email}`,
                 {
                     headers: {
                         authorization: `bearrer ${localStorage.getItem('accessToken')}`
@@ -13,7 +13,7 @@ const useAuthorization = email => {
                 })
                 .then(res => res.json())
                 .then(data => {
-                    setIsAuthorized(data.isAuthorized);
+                    setIsAuthorized(data.acknowledge);
                     setIsUserLoading(false);
                 })
         }
@@ -21,4 +21,4 @@ const useAuthorization = email => {
     return [isAuthorized, isUserLoading]
 }
 
-export default useAuthorization;
+export default useDashAuth;

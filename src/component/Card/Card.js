@@ -22,7 +22,7 @@ const AnimatedCard = ({ advertisedProduct }) => {
     //report handler
     const handleReport = () => {
 
-        fetch(`https://zooom-vroom-i-garage-server.vercel.app/product/reported/${_id}`, {
+        fetch(`http://localhost:5000/product/reported/${_id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearrer ${localStorage.getItem('accessToken')}`

@@ -11,7 +11,7 @@ const MyProduct = () => {
         queryKey: ["products"],
         queryFn: async () => {
             try {
-                const res = await fetch(`https://zooom-vroom-i-garage-server.vercel.app/seller/product/${user.email}`, {
+                const res = await fetch(`http://localhost:5000/seller/product/${user.email}`, {
                     headers: {
                         authorization: `bearrer ${localStorage.getItem('accessToken')}`
                     }
@@ -31,7 +31,7 @@ const MyProduct = () => {
 
     const handleAdvertisement = (id) => {
 
-        fetch(`https://zooom-vroom-i-garage-server.vercel.app/product/advertise/${id}`, {
+        fetch(`http://localhost:5000/product/advertise/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearrer ${localStorage.getItem('accessToken')}`
@@ -53,7 +53,7 @@ const MyProduct = () => {
 
     const handleDeleteProduct = (id) => {
         console.log(id);
-        fetch(`https://zooom-vroom-i-garage-server.vercel.app/product/delete/${id}`, {
+        fetch(`http://localhost:5000/product/delete/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearrer ${localStorage.getItem('accessToken')}`

@@ -4,7 +4,8 @@ import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({ booking }) => {
-    const { productName, price, pic, buyerName, buyerEmail, productId, payment, } = booking
+    // const { productName, price, pic, buyerName, buyerEmail, productId, payment, } = booking
+    const { price, buyerName, buyerEmail, productId } = booking
     const stripe = useStripe()
     const elements = useElements();
     const [cardError, setCardError] = useState('')
@@ -16,7 +17,7 @@ const CheckoutForm = ({ booking }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('https://zooom-vroom-i-garage-server.vercel.app/create-payment-intents', {
+        fetch('http://localhost:5000/create-payment-intents', {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -82,7 +83,7 @@ const CheckoutForm = ({ booking }) => {
                 bookingId: productId
             }
             //u should store payment info to database
-            fetch("https://zooom-vroom-i-garage-server.vercel.app/payments", {
+            fetch("http://localhost:5000/payments", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
@@ -99,7 +100,7 @@ const CheckoutForm = ({ booking }) => {
                 })
 
 
-            fetch(`https://zooom-vroom-i-garage-server.vercel.app/payment/success/${productId}`, {
+            fetch(`http://localhost:5000/payment/success/${productId}`, {
                 method: 'PUT',
                 headers: {
                     authorization: `bearrer ${localStorage.getItem('accessToken')}`

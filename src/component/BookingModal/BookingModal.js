@@ -20,7 +20,7 @@ const BookingModal = ({ booking }) => {
     }
     //toast show
     const handleSubmit = () => {
-        fetch('https://zooom-vroom-i-garage-server.vercel.app/booking', {
+        fetch('http://localhost:5000/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

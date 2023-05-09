@@ -5,11 +5,16 @@ import Navbar from '../../Shared/Navbar/Navbar';
 import useAuthorization from "../../../hooks/useAuthorization/useAuthorization";
 import brandLogo from "../../../assets/icon.png";
 import nullAvatar from "../../../assets/avatarNull.webp";
+import Loading from '../../../component/Loading/Loading';
 
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
-    const [isAuthorized] = useAuthorization(user?.email)
+    const [isAuthorized, isUserLoading] = useAuthorization(user?.email);
+
+    if (isUserLoading) {
+        return <Loading />
+    }
 
     return (
         <div>

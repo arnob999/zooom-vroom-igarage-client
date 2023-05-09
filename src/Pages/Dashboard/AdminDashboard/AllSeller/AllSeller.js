@@ -8,7 +8,7 @@ import VerificationBadge from "../../../../component/VerificationBadge/Verificat
 const AllSeller = () => {
     const handleVerification = (id) => {
         console.log(id)
-        fetch(`https://zooom-vroom-i-garage-server.vercel.app/user/verification/${id}`, {
+        fetch(`http://localhost:5000/user/verification/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearrer ${localStorage.getItem('accessToken')}`
@@ -24,7 +24,7 @@ const AllSeller = () => {
         queryKey: ["sellers"],
         queryFn: async () => {
             try {
-                const res = await fetch("https://zooom-vroom-i-garage-server.vercel.app/users/authorized/seller", {
+                const res = await fetch("http://localhost:5000/users/authorized/seller", {
                     headers: {
                         authorization: `bearrer ${localStorage.getItem('accessToken')}`
                     }
@@ -45,7 +45,7 @@ const AllSeller = () => {
 
     const handleDeleteUser = (id) => {
         console.log(id);
-        fetch(`https://zooom-vroom-i-garage-server.vercel.app/user/delete/${id}`, {
+        fetch(`http://localhost:5000/user/delete/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearrer ${localStorage.getItem('accessToken')}`

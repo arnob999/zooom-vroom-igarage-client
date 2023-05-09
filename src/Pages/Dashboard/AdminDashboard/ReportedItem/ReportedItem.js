@@ -10,7 +10,7 @@ const ReportedItem = () => {
         queryKey: ["reportedProducts"],
         queryFn: async () => {
             try {
-                const res = await fetch("https://zooom-vroom-i-garage-server.vercel.app/product/allReported", {
+                const res = await fetch("http://localhost:5000/product/allReported", {
                     headers: {
                         authorization: `bearrer ${localStorage.getItem('accessToken')}`
                     }
@@ -31,7 +31,7 @@ const ReportedItem = () => {
 
     const handleDeleteProduct = (id) => {
         console.log(id);
-        fetch(`https://zooom-vroom-i-garage-server.vercel.app/product/delete/${id}`, {
+        fetch(`http://localhost:5000/product/delete/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearrer ${localStorage.getItem('accessToken')}`

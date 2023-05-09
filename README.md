@@ -35,3 +35,6 @@ adminPassword: zxcvbnmA5*
 - react-hook-form
 - react-hot-toast
 
+
+## Vercel Server
+- https://zooom-vroom-i-garage-server.vercel.app/

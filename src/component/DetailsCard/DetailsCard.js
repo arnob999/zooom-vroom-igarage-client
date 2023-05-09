@@ -18,7 +18,7 @@ const DetailsCard = ({ product }) => {
 
     //to ensure seller is verified or not to show the badge
     useEffect(() => {
-        fetch(`https://zooom-vroom-i-garage-server.vercel.app/users/verification/${sellerEmail}`)
+        fetch(`http://localhost:5000/users/verification/${sellerEmail}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data[0].verified)
@@ -36,7 +36,7 @@ const DetailsCard = ({ product }) => {
     //report handler
     const handleReport = () => {
 
-        fetch(`https://zooom-vroom-i-garage-server.vercel.app/product/reported/${_id}`, {
+        fetch(`http://localhost:5000/product/reported/${_id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearrer ${localStorage.getItem('accessToken')}`

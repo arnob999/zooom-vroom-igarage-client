@@ -5,7 +5,7 @@ const HotProducts = () => {
 
     const [advertisedProducts, setAdvertisedProducts] = useState([])
     useEffect(() => {
-        fetch("https://zooom-vroom-i-garage-server.vercel.app/advertised")
+        fetch("http://localhost:5000/advertised")
             .then(res => res.json())
             .then(data => {
                 setAdvertisedProducts(data.slice(0, 3))

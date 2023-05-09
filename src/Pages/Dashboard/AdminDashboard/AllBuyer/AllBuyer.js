@@ -11,7 +11,7 @@ const AllBuyer = () => {
         queryKey: ["buyers"],
         queryFn: async () => {
             try {
-                const res = await fetch("https://zooom-vroom-i-garage-server.vercel.app/users/authorized/buyer", {
+                const res = await fetch("http://localhost:5000/users/authorized/buyer", {
                     headers: {
                         authorization: `bearrer ${localStorage.getItem('accessToken')}`
                     }
@@ -32,7 +32,7 @@ const AllBuyer = () => {
 
     const handleDeleteUser = (id) => {
         console.log(id);
-        fetch(`https://zooom-vroom-i-garage-server.vercel.app/user/delete/${id}`, {
+        fetch(`http://localhost:5000/user/delete/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearrer ${localStorage.getItem('accessToken')}`

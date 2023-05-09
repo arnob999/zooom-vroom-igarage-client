@@ -43,7 +43,7 @@ const SignUp = () => {
         setSignUpError('')
         createUser(data.email, data.password)
             .then(result => {
-                const user = result.user;
+                // const user = result.user;
                 setSignUpError("")
                 toast.success("Sign Up Complete")
 
@@ -75,7 +75,7 @@ const SignUp = () => {
 
         const user = { name, email, role: roleValue, verified: "false", photoURL };
 
-        fetch('https://zooom-vroom-i-garage-server.vercel.app/users', {
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

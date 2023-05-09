@@ -6,7 +6,7 @@ const Hero = () => {
             <div className="hero-overlay bg-opacity-30"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className=" text-white">
-                    <h1 className="mb-5 text-5xl font-serif font-bold">Weolcome to Zooom Vrooom iGarage</h1>
+                    <h1 className="mb-5 text-5xl font-serif font-bold">Welcome to Zooom Vrooom iGarage</h1>
 
                     <button className="btn text-white shadow-lg btn-primary">Start a tour</button>
                 </div>
