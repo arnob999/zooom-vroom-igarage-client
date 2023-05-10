@@ -5,7 +5,7 @@ const useAuthorization = email => {
     const [isUserLoading, setIsUserLoading] = useState(true);
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/authorization/${email}`,
+            fetch(`https://zooom-vroom-i-garage-server.vercel.app/users/authorization/${email}`,
                 {
                     headers: {
                         authorization: `bearrer ${localStorage.getItem('accessToken')}`

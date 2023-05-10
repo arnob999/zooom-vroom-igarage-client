@@ -21,7 +21,7 @@ const AddProduct = () => {
         formData.status = "unsold"
         console.log(formData)
 
-        fetch('http://localhost:5000/product', {
+        fetch('https://zooom-vroom-i-garage-server.vercel.app/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

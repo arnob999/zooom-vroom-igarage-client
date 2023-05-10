@@ -11,7 +11,7 @@ const MyOrder = () => {
         queryKey: ["myOrders"],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/booking/${user?.email}`, {
+                const res = await fetch(`https://zooom-vroom-i-garage-server.vercel.app/booking/${user?.email}`, {
                     headers: {
                         authorization: `bearrer ${localStorage.getItem('accessToken')}`
                     }
