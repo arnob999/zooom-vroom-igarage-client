@@ -12,20 +12,22 @@ const Category = () => {
             })
     }, [])
     return (
-        <div className="mt-8 w-full">
-            <div className='flex justify-center'>
-                <h1 className='text-5xl font-serif font-bold mb-3'>
-                    Categories
-                </h1>
+        <div className='flex justify-center'>
+            <div className="mt-8">
+                <div className='flex justify-center'>
+                    <h1 className='text-5xl font-serif font-bold mb-9'>
+                        Categories
+                    </h1>
+                </div>
+                <div className='mainCard grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-20 gap-y-10'>
+                    {
+                        categories.map(category => <CatCard key={category._id} category={category} />)
+                    }
+                </div>
+
+
+
             </div>
-            <div className='w-full mainCard grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'>
-                {
-                    categories.map(category => <CatCard key={category._id} category={category} />)
-                }
-            </div>
-
-
-
         </div>
     );
 };
