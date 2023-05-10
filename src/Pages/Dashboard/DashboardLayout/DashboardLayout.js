@@ -24,7 +24,7 @@ const DashboardLayout = () => {
                 <div className="drawer-content">
                     <Outlet></Outlet>
                 </div>
-                <aside className="flex flex-col w-64 h-3/4 px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
+                <aside className="flex flex-col rounded-xl w-64 h-3/4 px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
                     <Link to={"/dashboard"} className="mx-auto">
                         <img className='rounded-xl' src={brandLogo} alt="brandLogo" />
                     </Link>
@@ -36,6 +36,7 @@ const DashboardLayout = () => {
                     </div>
 
                     <div className="flex flex-col justify-between flex-1 mt-6">
+
                         <nav>
                             {/* For Buyer Dashboard*/}
                             {
