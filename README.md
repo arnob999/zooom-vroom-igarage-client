@@ -6,7 +6,7 @@ A Car Reselling Website
 ## Admin
 adminEmail: arnob196@gmail.com
 
-adminPassword: zxcvbnmA5*
+adminPassword: test5*Pass
 
 
 
